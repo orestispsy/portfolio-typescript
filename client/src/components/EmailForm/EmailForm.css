@@ -1,0 +1,228 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.emailFormContainerBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Bangers", cursive;
+  margin-top: 5vh;
+}
+
+.emailFormContainer {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  color: black;
+  background-color: rgb(252, 236, 208);
+  border: 1px solid orange;
+  padding: 2.5vmax;
+  border-radius: 2vmax;
+  animation: fadeIn 4s;
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 2vmax;
+}
+
+.inputHeadline {
+  text-shadow: -1px 1px 0 white, 1px -1px 0 white, 1px 1px 0 white,
+    -1px -1px 0 white;
+  font-size: 2vmax;
+}
+
+input {
+  border-radius: 1vh;
+  height: 3vmax;
+  border-color: transparent;
+  background-color: black;
+  color: white;
+  text-align: center;
+  outline: none;
+  margin-bottom: 3vh;
+}
+
+.textAreaBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding: 0 2vmax;
+}
+
+.quickMessage {
+  font-size: 3vmax;
+  margin-bottom: 0.5vmax;
+  text-shadow: -0 0 10px orange, 0 -0 10px orange, 0 0 10px orange,
+    -0 -0 10px orange;
+}
+
+textarea {
+  width: 40vw;
+  height: 40vh;
+  background-color: black;
+  color: white;
+  resize: none;
+  outline: none;
+  padding: 2vh;
+  border-radius: 1vmax !important;
+}
+
+.sendButtonDisabled {
+  margin-top: -0.5vmax;
+  font-size: 2vmax;
+  cursor: not-allowed;
+  color: grey;
+}
+
+.sendButton,
+.sent {
+  margin-top: -0.5vmax;
+  font-size: 2vmax;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+
+.error {
+  margin-top: 0.5vmax;
+  font-size: 2vmax;
+  color: red;
+  font-family: "Darker Grotesque", sans-serif;
+}
+
+.sendButton:hover {
+  color: black;
+  text-shadow: -0 0 10px orange, 0 -0 10px orange, 0 0 10px orange,
+    -0 -0 10px orange;
+}
+
+.sending {
+  width: 4vmax;
+  height: 4vmax;
+  background-image: url("./assets/sending.gif");
+  background-size: cover;
+  margin-top: -2.3vmax;
+}
+
+#closeTab {
+  border: 1px solid rgba(255, 166, 0, 0.274);
+  margin: -1vmax -1vmax 0 0;
+  color: black;
+  align-self: flex-start;
+}
+
+#closeTab:hover {
+  box-shadow: -0 0 10px rgba(0, 0, 0, 0.25), 0 -0 10px rgba(0, 0, 0, 0.25),
+    0 0 10px rgba(0, 0, 0, 0.25), -0 -0 10px rgba(0, 0, 0, 0.25);
+  color: red;
+  transition: 0.5s;
+}
+
+#mail {
+  width: 7.5vmax;
+  height: 4vmax;
+  margin: 0 0 1.5vmax -1vmax;
+  cursor: unset;
+  filter: invert(0%);
+}
+
+.closeTab {
+  align-self: flex-end;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Poller One", cursive;
+  padding: 0.2vmax 0.4vmax;
+  color: black;
+  text-decoration: none;
+  font-size: 1vmax;
+  margin: 1vmax;
+  box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
+    0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+}
+
+@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (orientation: portrait) {
+  .emailFormContainerBack {
+    margin-top: 3vmax !important;
+  }
+
+  .emailFormContainer {
+    height: 70vh !important;
+    flex-direction: column-reverse;
+    width: 76vw !important;
+    border: 2px solid black !important;
+    box-shadow: -0 0 3px rgba(0, 0, 0, 0.25), 0 -0 3px rgba(0, 0, 0, 0.25),
+      0 0 3px rgba(0, 0, 0, 0.25), -0 -0 3px rgba(0, 0, 0, 0.25) !important;
+  }
+  .inputHeadline {
+    font-size: 3vmax !important;
+    margin-bottom: 1vmax !important;
+  }
+
+  input {
+    width: 40vw !important;
+    height: 5vh !important;
+  }
+
+  textarea {
+    width: 65vw !important;
+    height: 30vh !important;
+    margin-bottom: 1vmax !important;
+  }
+
+  #mail {
+    margin: 2vmax;
+  }
+  .sendButton,
+  .sendButtonDisabled {
+    font-size: 4vmax !important;
+  }
+
+  .closeTab {
+    margin: 2vmax 2vmax 0 0 !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax !important;
+  }
+
+  #closeTab {
+    align-self: flex-end !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax;
+    margin: -0.5vmax -0.5vmax -1vmax 0 !important;
+  }
+}
+
+@media only screen and (min-device-width: 273px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .userDetails input {
+    margin-top: 0.5vmax !important;
+    width: 20vw !important;
+    height: 10vh !important;
+  }
+
+  .closeTab {
+    margin-right: 2vmax !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax !important;
+  }
+
+  #closeTab {
+    margin-right: -1vmax !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax;
+  }
+}

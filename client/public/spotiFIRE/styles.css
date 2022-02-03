@@ -1,0 +1,103 @@
+body {
+  background-color: black;
+  font-family: fantasy;
+  font-size: 150%;
+}
+
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+img {
+  width: 15vmax;
+  height: 15vmax;
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  height: 5vh;
+  margin: 1vh;
+  background-color: rgb(221, 20, 60);
+}
+
+select {
+  margin: 0 0.5vmax;
+}
+
+#spotifire {
+  width: 35vmax;
+  height: 35vmax;
+}
+
+#next20 {
+  position: fixed;
+  font-family: monospace;
+  visibility: hidden;
+  bottom: 15px;
+  left: 0;
+}
+
+.results-container {
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: yellowgreen;
+  width: 20vw;
+}
+
+.searchINFO {
+  color: white;
+
+  visibility: hidden;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 0.5vmax;
+}
+
+@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (orientation: portrait) {
+  #spotifire {
+    height: 40vh !important;
+    width: 80vw !important;
+    margin-top: 10vh !important;
+  }
+  input {
+    width: 40vw;
+  }
+
+  a {
+    width: 45vw;
+  }
+
+  .platform {
+    height: 8vh;
+    width: 95vw;
+  }
+}
+
+@media only screen and (min-device-width: 273px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .platform {
+    height: 10vh !important;
+    width: 55vw !important;
+  }
+  a {
+    font-size: 2.5vmax !important;
+  }
+}

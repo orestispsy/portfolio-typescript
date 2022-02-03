@@ -1,0 +1,380 @@
+@keyframes fader {
+  50% {
+    opacity: 0%;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    color: rgb(220, 20, 60);
+  }
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.introTitles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(249, 255, 169);
+  font-size: 1.5vmax;
+  width: 60vw;
+
+  height: fit-content;
+  text-align: center;
+  font-family: "Darker Grotesque", sans-serif;
+  letter-spacing: 1px;
+  background-color: black;
+}
+
+.introTitles div:nth-child(1) {
+  font-size: 3vmax;
+
+  width: fit-content;
+  align-self: center;
+  margin: 1vmax;
+  color: rgb(255, 255, 255);
+}
+
+.introTitles div:nth-child(7) {
+  padding-bottom: 3vmax;
+}
+
+.bio {
+  width: 55vw;
+  text-indent: 30px;
+  padding-bottom: 1vmax;
+  text-align: justify;
+}
+
+.bio span {
+  color: orange;
+  margin: 0 0.5vmax 0 1vmax;
+  cursor: pointer;
+  font-size: 1.5vmax;
+}
+
+.bio span:hover {
+  color: rgb(255, 255, 255);
+}
+
+#dots {
+  margin-left: 0;
+  color: white;
+  font-size: unset;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  font-family: "Poller One", cursive;
+  font-size: 2vmax;
+  text-align: center;
+  color: yellow;
+  width: 60vw;
+}
+
+.intro div {
+  background-color: black;
+  width: 50vw !important;
+  padding: 1vmax 2vmax;
+  animation: blinker 6s linear infinite;
+}
+
+.projectBoxBack {
+  border: 2px solid black;
+  box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
+    0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5vh;
+  background-color: white;
+  border-radius: 5vh;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.projectBox {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  min-height: 19vmax;
+  flex-wrap: wrap;
+  padding-top: 2vmax;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-radius: 5vh;
+  background-color: rgba(217, 255, 219, 0.11);
+}
+.projectBox a {
+  text-decoration: none;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vmax;
+}
+
+.projectBack {
+  display: flex;
+  justify-content: center;
+  width: 22vw;
+  padding: 0.5vmax;
+  margin: 0 2vmax;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-shadow: -1px 1px 0 white, 1px -1px 0 white, 1px 1px 0 white,
+    -1px -1px 0 white;
+  font-family: "Bangers", cursive;
+  text-decoration: none;
+  color: black;
+  font-size: 3vmax;
+  cursor: pointer;
+  height: 20vmax;
+}
+
+.name {
+  background-color: black;
+  border-radius: 2px;
+  color: white;
+  text-shadow: -1px 1px 0 black, 1px -1px 0 black, 1px 1px 0 black,
+    -1px -1px 0 black;
+  text-align: center;
+  letter-spacing: 1px;
+  border: 2px solid black;
+}
+
+.name:hover {
+  color: rgb(229, 255, 0);
+}
+
+.imgScr {
+  width: 9vmax;
+  height: 9vmax;
+  border-radius: 50%;
+  border-style: groove;
+  border-width: thin;
+  padding: 25px;
+  border-bottom: transparent;
+  box-shadow: 0 0 10px black;
+  transition: 2s;
+  -webkit-transition: all 0.1s ease;
+  margin-top: 0.5vmax;
+  background-color: rgba(251, 255, 0, 0.144);
+  margin-top: 1vmax;
+}
+
+.imgScr:hover {
+  border: transparent;
+  padding: 14px;
+  width: 13vmax;
+  height: 13vmax;
+}
+
+.imgScr:active {
+  background-color: rgba(255, 0, 0, 0.418);
+}
+
+.hot {
+  position: sticky;
+  width: 4vmax;
+  height: 5vmax;
+  background-size: cover;
+  z-index: 2567234643;
+  margin-top: -3vmax;
+}
+
+.remastered {
+  position: sticky;
+  z-index: 2567234643;
+  margin-top: -2vmax;
+  font-size: 2.5vmax;
+  color: red;
+  text-shadow: -1px 1px 0 yellow, 1px -1px 0 yellow, 1px 1px 0 yellow,
+    -1px -1px 0 yellow;
+}
+
+.techStack {
+  background-color: white;
+  width: 61vmax;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -4vh;
+  border-radius: 10vh;
+  border: 10px solid black;
+}
+
+#techPic {
+  width: 5vmax;
+  height: 3vmax;
+}
+
+#techPicX {
+  width: 5vmax;
+  height: 4vmax;
+}
+
+#trio {
+  width: 7vmax;
+  height: 3vmax;
+  padding: 1vmax 2vmax;
+}
+
+.techPic {
+  width: 3vmax;
+  height: 3vmax;
+  padding: 1vmax;
+}
+
+.mute {
+  text-align: center;
+  color: rgba(200, 255, 0, 0.849) !important;
+  font-size: 1.5vmax !important;
+}
+
+.mute:hover {
+  color: rgba(255, 60, 0, 0.849) !important;
+}
+
+#mute {
+  color: rgba(255, 60, 0, 0.849) !important;
+  animation: fader 1s infinite;
+}
+
+.footer {
+  font-family: "Darker Grotesque", sans-serif;
+  margin: 1vmax 0 2vmax 0;
+  font-size: 1vmax;
+  font-weight: bolder;
+
+  padding: 0 0.5vmax;
+}
+.footer a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (orientation: portrait) {
+  .imgScr {
+    padding: 2vw !important;
+  }
+
+  .introTitles {
+    width: 80vw !important;
+    overflow-y: scroll !important;
+    margin-bottom: 1vmax !important;
+  }
+  .introTitles div:nth-child(1) {
+    font-size: 3.5vmax;
+  }
+  .bio {
+    width: 65vw;
+    text-indent: 10px;
+    font-size: 3vmax;
+    margin: 1vmax;
+  }
+  .description {
+    flex-direction: column !important;
+    height: fit-content !important;
+  }
+  .name {
+    margin-bottom: 1vmax !important;
+  }
+
+  .projectBox {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    height: unset;
+    min-height: 42vh !important;
+    overflow-y: scroll;
+    width: 90vw !important;
+  }
+
+  .projectBoxBack {
+    width: 90vw !important;
+  }
+
+  .project {
+    margin: 2vmax !important;
+    width: 35vw !important;
+  }
+  .hot {
+    width: 6vmax !important;
+    height: 8vmax !important;
+  }
+
+  .techStack {
+    width: 60vw !important;
+    flex-wrap: wrap;
+    border-radius: 2vmax !important;
+    border: none !important;
+    margin-top: -3vh !important;
+  }
+
+  #mute,
+  #muted {
+    font-size: 3vmax !important;
+    color: rgba(255, 166, 0, 0.945);
+  }
+}
+
+@media only screen and (min-device-width: 273px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .projectBoxBack {
+    width: 94vw !important;
+  }
+  .projectBox {
+    height: unset !important;
+    width: 94vw !important;
+  }
+
+  .introTitles {
+    width: 84vw !important;
+  }
+
+  .introTitles div:nth-child(1) {
+    font-size: 4vmax !important;
+  }
+
+  .bio {
+    font-size: 3vmax !important;
+    width: 75vw !important;
+  }
+
+  .imgScr {
+    padding: 2vmax !important;
+  }
+
+  .name {
+    margin-bottom: 0.5vmax !important;
+  }
+
+  #mute,
+  #muted {
+    font-size: 3vmax !important;
+  }
+  .techStack {
+    padding: 0.5vmax !important;
+    border-radius: 20vh !important;
+    margin-bottom: -3vh !important;
+  }
+}

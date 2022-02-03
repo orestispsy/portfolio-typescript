@@ -1,0 +1,239 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.projectBoxBack {
+  border: 2px solid black;
+  box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
+    0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5vh;
+  background-color: white;
+  border-radius: 5vh;
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.projectBox {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 95vw;
+  min-height: 19vmax;
+  flex-wrap: wrap;
+  padding-top: 2vmax;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-radius: 5vh;
+  background-color: rgba(217, 255, 219, 0.11);
+}
+
+#projectBox {
+  padding: 0 0 3vmax 0;
+  background-color: white;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vmax;
+}
+
+.projectPreview {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 55vw;
+  height: 55vh;
+  font-size: 2vmax;
+  text-align: center;
+  border-radius: 5vh;
+}
+
+.projectText {
+  width: 43vw;
+  height: 55vh;
+  text-align: justify;
+  font-family: "Darker Grotesque", sans-serif;
+  color: rgb(0, 0, 0);
+  overflow-y: scroll;
+  margin-bottom: 1vmax;
+  scrollbar-width: none;
+}
+
+.featuresContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#features {
+  margin-top: 4vmax;
+  width: 20vw;
+}
+
+.features {
+  margin: 1vmax 0;
+  font-size: 3vmax;
+  font-family: "Poller One", cursive;
+  width: 43vw;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.projectUp {
+  background-image: url("./assets/up.png");
+  background-size: cover;
+  width: 3vmax;
+  height: 3vmax;
+  cursor: pointer;
+}
+
+.projectDown {
+  background-image: url("./assets/down.png");
+  background-size: cover;
+  width: 3vmax;
+  height: 3vmax;
+  cursor: pointer;
+}
+.projectDown:hover,
+.projectUp:hover {
+  filter: invert(50%);
+}
+
+.closeTab {
+  align-self: flex-end;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Poller One", cursive;
+  padding: 0.2vmax 0.4vmax;
+  color: black;
+  text-decoration: none;
+  font-size: 1vmax;
+  margin: 1vmax;
+  box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
+    0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
+  border: 1px solid black;
+}
+
+.closeTab:hover {
+  color: rgb(243, 89, 89);
+  box-shadow: -0 0 10px rgba(0, 0, 0, 0.25), 0 -0 10px rgba(0, 0, 0, 0.25),
+    0 0 10px rgba(0, 0, 0, 0.25), -0 -0 10px rgba(0, 0, 0, 0.25);
+  border-color: transparent;
+}
+
+@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (orientation: portrait) {
+  .projectPreview {
+    width: 70vw !important;
+    margin-left: -3vmax !important;
+    height: unset !important;
+  }
+  .projectText {
+    font-size: 2vmax !important;
+    z-index: 234562345234 !important;
+    margin-right: -6vmax !important;
+    width: 55vw !important;
+    height: unset !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    margin: 2vmax !important;
+    width: 35vw !important;
+  }
+
+  .projectBack {
+    height: 25vmax !important;
+    width: unset !important;
+    margin: 0 !important;
+  }
+
+  .featuresContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #features {
+    width: unset !important;
+  }
+
+  .projectScroll {
+    align-self: center !important;
+    visibility: hidden;
+  }
+
+  #projectBox {
+    margin-top: 0.5vmax !important;
+  }
+  .projectBox {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    height: unset;
+    min-height: 42vh !important;
+    overflow-y: scroll;
+    width: 90vw !important;
+  }
+
+  .projectBoxBack {
+    width: 90vw !important;
+  }
+  .closeTab {
+    margin: 2vmax 2vmax 0 0 !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax !important;
+  }
+}
+
+@media only screen and (min-device-width: 273px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .project {
+    margin-bottom: 3vmax;
+  }
+  .projectPreview {
+    height: 60vh;
+    width: 50vw;
+  }
+
+  .projectBoxBack {
+    width: 94vw !important;
+  }
+
+  #projectBox {
+    flex-wrap: nowrap;
+  }
+
+  .projectBox {
+    height: unset !important;
+    width: 94vw !important;
+  }
+
+  #projectBoxBack {
+    flex-wrap: nowrap;
+    margin-top: 3vmax !important;
+  }
+
+  .closeTab {
+    margin-right: 2vmax !important;
+    font-size: 2vmax !important;
+    padding: 0.4vmax 0.8vmax !important;
+  }
+}

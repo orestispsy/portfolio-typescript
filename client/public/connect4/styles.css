@@ -1,0 +1,160 @@
+body {
+  background-color: black;
+  min-height: 80vh;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+}
+
+#board {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.slot {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.hole {
+  height: 80px;
+  width: 80px;
+  transform: translate(-30px, -30px);
+  border: 40px solid lime;
+  border-radius: 50%;
+}
+
+.player1 {
+  background-color: red;
+  background-image: url("assets/player1.gif");
+  background-size: cover;
+}
+
+.player2 {
+  background-color: yellow;
+  background-image: url("assets/player2.gif");
+  background-size: cover;
+}
+
+.winner {
+  background-image: url("assets/winner.jpg");
+  background-size: contain;
+}
+
+#info {
+  position: absolute;
+  top: 10vh;
+  left: 70vh;
+  font-family: fantasy;
+  width: 450px;
+  height: 150px;
+  background-color: black;
+  color: lime;
+  z-index: 1355234;
+  text-align: center;
+  visibility: hidden;
+}
+
+.xinfo {
+  margin: 0;
+  position: absolute;
+  font-size: 80%;
+  right: 5px;
+  top: 0;
+}
+
+.infomsg {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  font-size: 150%;
+  text-align: center;
+}
+
+.console {
+  font-family: fantasy;
+  position: fixed;
+  left: 1vmax;
+  bottom: 3vmax;
+  background-color: black;
+}
+
+.console p {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.audio {
+  height: 0;
+}
+
+.audiodiv {
+  position: fixed;
+  right: 1vmax;
+  bottom: 1vmax;
+  width: 120px;
+  height: 25px;
+}
+
+.audiodiv p {
+  position: absolute;
+  overflow: hidden;
+  right: 10px;
+  bottom: 5%;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: fantasy;
+  white-space: pre-line;
+}
+
+.end {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("assets/audio.gif");
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  visibility: hidden;
+  overflow: visible;
+}
+
+.winner {
+  background-image: url("assets/winner.jpg");
+  background-size: cover;
+}
+
+@media only screen and (min-device-width: 100px) and (max-device-width: 480px) and (orientation: portrait) {
+  .container {
+    width: 100vw !important;
+    margin-top: 50vh !important;
+    overflow: visible;
+  }
+
+  .end {
+    left: -20% !important;
+    width: 320% !important;
+    height: 200% !important;
+  }
+
+  #board {
+    width: 100vw !important;
+    margin: 50vh 0 0 15vw !important;
+    justify-content: unset !important;
+  }
+}
