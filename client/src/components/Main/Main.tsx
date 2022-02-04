@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
 
 import "./Main.css";
@@ -14,7 +13,7 @@ interface Props {
   mute: boolean;
   setMute: (e: any) => void;
   projectView: boolean;
-  scrollTo: (e: any, y?: ScrollBehavior | undefined) => void;
+  scrollTo: (e: any, e2?: ScrollBehavior | undefined) => void;
 }
 
 export const Main: React.FC<Props> = ({

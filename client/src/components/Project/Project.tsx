@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import React from "react";
 import { Link } from "react-router-dom";
 
 import { Gallery } from "../Gallery/Gallery";

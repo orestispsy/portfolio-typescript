@@ -1,12 +1,11 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Route, Link, HashRouter } from "react-router-dom";
 import { Project } from "./../Project/Project";
 import { EmailForm } from "./../EmailForm/EmailForm";
 
 import { Main } from "./../Main/Main";
 
-import projects from "../../tools/projects.js";
+import projects from "../../common/projects.js";
 
 import "./App.css";
 
