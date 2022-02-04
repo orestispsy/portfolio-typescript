@@ -1,7 +1,7 @@
-const path = require("path");
+import path from "path";
+import HtmlWebPackPlugin from "html-webpack-plugin"
 
-const port = process.env.CONTAINER_PORT || 3000;
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const port:number|string = process.env.CONTAINER_PORT || 3000;
 
 module.exports = {
   mode: "production",
@@ -9,7 +9,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
   },
   entry: [
-    `webpack-dev-server/client?http://localhost:${port}`,
+  
     "./client/src/Index.tsx",
   ],
   output: {

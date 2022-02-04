@@ -5,17 +5,13 @@ import { EmailForm } from "./../EmailForm/EmailForm";
 
 import { Main } from "./../Main/Main";
 
-import projects from "../../common/projects.js";
+import projects from "../../common/projects";
 
 import "./App.css";
 
 const { scrollTo } = require("./AppUtils");
 
 interface Props {}
-
-type params = {
-  id: string;
-};
 
 export const App: React.FC<Props> = ({}) => {
   const [selectedProject, setSelectedProject] = useState(0);
