@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./../EmailForm/EmailForm.css";
+
+import {
+  EmailFormContainerBack,
+  EmailFormContainer,
+  UserDetails,
+  InputHead,
+  Input,
+  TextAreaBack,
+  TextArea,
+  QuickMessage,
+  SendButton,
+  SendingNotification,
+  Error,
+  CloseTab,
+  EmailHatImage,
+} from "./styled/EmailForm.styled";
 
 interface Props {
   setProjectView: (e: boolean) => void;
   setProject: (e: boolean) => void;
+  setEmailView: (e: boolean) => void;
 }
 
 const {
@@ -14,7 +30,11 @@ const {
   sendEmail,
 } = require("./EmailFormUtils");
 
-export const EmailForm: React.FC<Props> = ({ setProjectView, setProject }) => {
+export const EmailForm: React.FC<Props> = ({
+  setProjectView,
+  setProject,
+  setEmailView,
+}) => {
   const [name, setName] = useState<boolean | string>(false);
   const [email, setEmail] = useState<boolean | string>(false);
   const [emailText, setEmailText] = useState<boolean | string>(false);
@@ -24,38 +44,38 @@ export const EmailForm: React.FC<Props> = ({ setProjectView, setProject }) => {
 
   useEffect(function () {
     setProjectView(false);
+    setProject(false);
+    setEmailView(true);
   }, []);
 
   return (
-    <div className="emailFormContainerBack">
-      <div className="emailFormContainer">
-        <div className="userDetails">
-          <div
-            title="Send Quick Message"
-            className="mail"
-            id="mail"
-            onClick={() => {
-              setProject(false);
-            }}
-          ></div>
-          <div className="inputHeadline">Your Name</div>
-          <input
+    <EmailFormContainerBack>
+      <EmailFormContainer>
+        <UserDetails>
+          <EmailHatImage />
+
+          <InputHead>Your Name</InputHead>
+          <Input
             autoComplete="none"
             placeholder="Name"
-            onChange={(e) => handleNameChange(e, setName)}
-          ></input>
-          <div className="inputHeadline">Your Email</div>
-          <input
+            onChange={(e: any) => handleNameChange(e, setName)}
+          />
+          <InputHead>Your Email</InputHead>
+          <Input
             autoComplete="none"
             placeholder="Email"
-            onChange={(e) => handleEmailChange(e, setEmail)}
-          ></input>
+            onChange={(e: any) => handleEmailChange(e, setEmail)}
+          />
+
           {(!name || !email || !emailText) && (
-            <div className="sendButtonDisabled">Send</div>
+            <SendButton cursor="not-allowed" color="grey">
+              Send
+            </SendButton>
           )}
           {name && email && emailText && !sending && !success && (
-            <div
-              className="sendButton"
+            <SendButton
+              cursor="pointer"
+              color="black"
               onClick={() => {
                 setSending(true);
                 sendEmail(
@@ -70,30 +90,26 @@ export const EmailForm: React.FC<Props> = ({ setProjectView, setProject }) => {
               }}
             >
               Send
-            </div>
+            </SendButton>
           )}
-          {sending && <div className="sending"></div>}
+          {sending && <SendingNotification />}
           {success && (
-            <Link to={"/"} className="sent">
+            <SendButton cursor="pointer" color="black" as={Link} to={"/"}>
               Done !
-            </Link>
+            </SendButton>
           )}
-        </div>
-        <div className="textAreaBack">
-          <div className="quickMessage">Get In Touch !</div>
-          <textarea
+        </UserDetails>
+        <TextAreaBack>
+          <QuickMessage>Get In Touch !</QuickMessage>
+          <TextArea
             placeholder="Write something..."
-            onChange={(e) => handleEmailTextChange(e, setEmailText)}
-          ></textarea>
-        </div>
-        <Link to={"/"} className="closeTab" id="closeTab">
-          X
-        </Link>
-      </div>
+            onChange={(e: any) => handleEmailTextChange(e, setEmailText)}
+          />
+        </TextAreaBack>
 
-      {error && (
-        <div className="error">Something Went Wrong, Please Try Again</div>
-      )}
-    </div>
+        <CloseTab to={"/"}> X</CloseTab>
+      </EmailFormContainer>
+      {error && <Error />}
+    </EmailFormContainerBack>
   );
 };

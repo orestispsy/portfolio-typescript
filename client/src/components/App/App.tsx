@@ -1,67 +1,35 @@
 import React, { useState } from "react";
-import { Route, Link, HashRouter } from "react-router-dom";
+import { Route, HashRouter } from "react-router-dom";
 import { Project } from "./../Project/Project";
 import { EmailForm } from "./../EmailForm/EmailForm";
 
+import { TopMenu } from "./../TopMenu/TopMenu";
 import { Main } from "./../Main/Main";
 
-import projects from "../../common/projects";
+import { projects } from "./../../common/projects";
 
-import "./App.css";
+import { AppContainer } from "./styled/App.styled";
 
 const { scrollTo } = require("./AppUtils");
 
 interface Props {}
 
 export const App: React.FC<Props> = ({}) => {
-  const [selectedProject, setSelectedProject] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<number>(0);
 
-  const [mute, setMute] = useState(false);
-  const [projectView, setProjectView] = useState(false);
+  const [mute, setMute] = useState<boolean>(false);
+  const [projectView, setProjectView] = useState<boolean>(false);
+  const [emailView, setEmailView] = useState<boolean>(false);
 
   return (
     <HashRouter hashType="noslash">
-      <div className="appContainer">
-        <div className="appBox">
-          <div className="introMenu">
-            <Link to={"/"} className="introText">
-              {!selectedProject && "Orestis Psycharis"}
-              {selectedProject && projects.projects[selectedProject].name}
-            </Link>
-          </div>
-          {!selectedProject && (
-            <div className="extLinks">
-              <a
-                href="https://www.linkedin.com/in/orestis-psycharis"
-                target="_blank"
-                title="LinkedIn"
-              >
-                <img src="./in.png" className="linkedIn"></img>
-              </a>
-              <a
-                href="https://github.com/orestispsy/"
-                target="_blank"
-                title="GitHub Repos"
-              >
-                <img src="./git.png" className="gitHub"></img>
-              </a>
-              <a href="tel:+4915224273054" target="_blank" title="Call Me">
-                <img src="./phone.png" className="phone"></img>
-              </a>
-              <a
-                href="mailto:opsychar@gmail.com"
-                target="_blank"
-                title="Send Email"
-              >
-                <img src="./mail.png" className="email"></img>
-              </a>
-
-              <Link to={"/contact"}>
-                <div title="Send Quick Message" className="mail"></div>
-              </Link>
-            </div>
-          )}
-        </div>
+      <AppContainer>
+        <TopMenu
+          selectedProject={selectedProject}
+          projects={projects}
+          emailView={emailView}
+          setEmailView={(e: any) => setEmailView(e)}
+        />
 
         <Route
           exact
@@ -70,7 +38,7 @@ export const App: React.FC<Props> = ({}) => {
             <Main
               setProject={(e: number) => setSelectedProject(e)}
               selectedProject={selectedProject}
-              projects={projects.projects}
+              projects={projects}
               setMute={(e: boolean) => setMute(e)}
               mute={mute}
               projectView={projectView}
@@ -85,6 +53,7 @@ export const App: React.FC<Props> = ({}) => {
             <EmailForm
               setProjectView={(e: boolean) => setProjectView(e)}
               setProject={(e: any) => setSelectedProject(e)}
+              setEmailView={(e: any) => setEmailView(e)}
             />
           )}
         />
@@ -95,13 +64,13 @@ export const App: React.FC<Props> = ({}) => {
             <Project
               setProject={(e: any) => setSelectedProject(e)}
               selectedProject={selectedProject}
-              projects={projects.projects}
+              projects={projects}
               setProjectView={(e: any) => setProjectView(e)}
               scrollTo={scrollTo}
             />
           )}
         />
-      </div>
+      </AppContainer>
     </HashRouter>
   );
 };

@@ -1,17 +1,12 @@
 import path from "path";
-import HtmlWebPackPlugin from "html-webpack-plugin"
-
-const port:number|string = process.env.CONTAINER_PORT || 3000;
+import HtmlWebPackPlugin from "html-webpack-plugin";
 
 module.exports = {
   mode: "production",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
   },
-  entry: [
-  
-    "./client/src/Index.tsx",
-  ],
+  entry: ["./client/src/Index.tsx"],
   output: {
     path: path.resolve(__dirname, "client", "build"),
     filename: "bundle.js",

@@ -62,7 +62,7 @@ export const Gallery: React.FC<Props> = ({
             }}
           ></img>
 
-          {selectedProject != 0 && (
+          {projects[selectedProject].pics.length != 1 && (
             <div className="galleryControls">
               <div className="galleryNumbers">
                 {counter + 1}/{projects[selectedProject].pics.length}

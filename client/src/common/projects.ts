@@ -1,4 +1,4 @@
-let projects = [
+export const projects = [
   {
     id: 0,
     name: "Portfolio",
@@ -20,7 +20,14 @@ let projects = [
       "Quick Email Form",
       `Easter Egg - Music`,
     ],
-    stack: ["Webpack.js", "React.js", "Node.js", "Express.js", "Email.js"],
+    stack: [
+      "Typescript",
+      "Webpack.js",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Email.js",
+    ],
   },
 
   {
@@ -137,9 +144,9 @@ let projects = [
   {
     id: 4,
     name: "zero-psy",
-    description: `This is the landing page of the domain zero-psy.com. Here I am experimenting
+    description: `This is the landing page of my main domain. Here I am experimenting
          with Element object methods in the HTML DOM, doing multiple CSS / Javascript
-         animations, while trying bringing a "Space Invaders styled" User Interface ! The whole script is written in
+         animations, while trying bringing a "Space-Invaders-Style" User Interface ! The whole script is written in
         Vanilla JS.`,
     preview: "./previewZeroPsy.jpg",
     url: "https://zero-psy.com",
