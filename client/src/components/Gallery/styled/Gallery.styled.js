@@ -9,12 +9,6 @@ export const GalleryContainer = styled.div`
   color: black;
   padding: 0 0 0 2vmax;
 
-  .galleryPic {
-  }
-
-  .galleryPicWide {
-  }
-
   @keyframes resize {
     0% {
       width: 32vw;

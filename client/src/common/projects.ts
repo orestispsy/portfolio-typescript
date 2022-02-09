@@ -6,8 +6,7 @@ export const projects = [
         No Create-React-App ! Then put down some basic React funtionalities, write Project / 
         Tech Stack / Features descriptions,
          create Photo Galleries and finally, the hardest part. Make a short text
-        speaking about myself ! Enjoy surfing this web-page while checking my latest
-         project sites.`,
+        speaking about myself ! Refactored with Typescript & React Styled Components.`,
     preview: "./previewPortfolio.jpg",
     url: "https://zero-psy.com/portfolio",
     git: "https://github.com/orestispsy/portfolio",
@@ -21,9 +20,10 @@ export const projects = [
       `Easter Egg - Music`,
     ],
     stack: [
-      "Typescript",
       "Webpack.js",
+      "Typescript",
       "React.js",
+      "Styled Components",
       "Node.js",
       "Express.js",
       "Email.js",
@@ -119,44 +119,7 @@ export const projects = [
   },
 
   {
-    id: 3,
-    name: "spotiFIRE!",
-    description:
-      "The SpotiFIRE ! In this project I am practicing with asynchronous HTTP/Ajax requests with jQuery for the first time. Calling an external api which retrieves data libraries from Spotify and throws the results on screen. A Spotify search-engine, just outside of it ! Give it a try and have patience for a couple of seconds while waiting for the results. Sometimes free data needs time on its way back home ! ",
-    preview: "./spotiFIRE/preview.jpg",
-    url: "./spotiFIRE/index.html?scroll=infinite",
-    git: "https://github.com/orestispsy/zero-psy/tree/master/client/public/spotiFIRE",
-    pics: [
-      { pic: "./projectPics/sf1.jpg" },
-      { pic: "./projectPics/sf2.jpg" },
-      { pic: "./projectPics/sf3.gif" },
-    ],
-    stack: ["jQuery"],
-    features: [
-      "Spotify Api Ajax Requests",
-      "Artist/Album Search",
-      "Listed Results",
-      "Direct Links to Spotify",
-      `Infinity Scroll On URL Location Search "?scroll=infinite"`,
-      `More Results Button On URL Location "/index.html"`,
-    ],
-  },
-  {
     id: 4,
-    name: "zero-psy",
-    description: `This is the landing page of my main domain. Here I am experimenting
-         with Element object methods in the HTML DOM, doing multiple CSS / Javascript
-         animations, while trying bringing a "Space-Invaders-Style" User Interface ! The whole script is written in
-        Vanilla JS.`,
-    preview: "./previewZeroPsy.jpg",
-    url: "https://zero-psy.com",
-    git: "https://github.com/orestispsy/falling-stars",
-    pics: [{ pic: "./projectPics/zp1.jpg" }, { pic: "./projectPics/zp2.gif" }],
-
-    stack: ["Javascript"],
-  },
-  {
-    id: 5,
     hot: false,
     remastered: true,
     name: "Connect4",
@@ -185,7 +148,44 @@ export const projects = [
       { pic: "./projectPics/c4RE4.gif" },
     ],
   },
+  {
+    id: 5,
+    name: "zero-psy",
+    description: `This is the landing page of my main domain. Here I am experimenting
+         with Element object methods in the HTML DOM, doing multiple CSS / Javascript
+         animations, while trying bringing a "Space-Invaders-Style" User Interface ! The whole script is written in
+        Vanilla JS.`,
+    preview: "./previewZeroPsy.jpg",
+    url: "https://zero-psy.com",
+    git: "https://github.com/orestispsy/falling-stars",
+    pics: [{ pic: "./projectPics/zp1.jpg" }, { pic: "./projectPics/zp2.gif" }],
 
+    stack: ["Javascript"],
+  },
+
+  {
+    id: 5,
+    name: "spotiFIRE!",
+    description:
+      "The SpotiFIRE ! In this project I am practicing with asynchronous HTTP/Ajax requests with jQuery for the first time. Calling an external api which retrieves data libraries from Spotify and throws the results on screen. A Spotify search-engine, just outside of it ! Give it a try and have patience for a couple of seconds while waiting for the results. Sometimes free data needs time on its way back home ! ",
+    preview: "./spotiFIRE/preview.jpg",
+    url: "./spotiFIRE/index.html?scroll=infinite",
+    git: "https://github.com/orestispsy/zero-psy/tree/master/client/public/spotiFIRE",
+    pics: [
+      { pic: "./projectPics/sf1.jpg" },
+      { pic: "./projectPics/sf2.jpg" },
+      { pic: "./projectPics/sf3.gif" },
+    ],
+    stack: ["jQuery"],
+    features: [
+      "Spotify Api Ajax Requests",
+      "Artist/Album Search",
+      "Listed Results",
+      "Direct Links to Spotify",
+      `Infinity Scroll On URL Location Search "?scroll=infinite"`,
+      `More Results Button On URL Location "/index.html"`,
+    ],
+  },
   {
     id: 6,
     name: "Imageboard",

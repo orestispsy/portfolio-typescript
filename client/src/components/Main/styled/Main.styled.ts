@@ -57,7 +57,7 @@ export const FeaturedBoxBack = styled.div`
 
 export const FeaturedBox = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 95vw;
