@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import "./Gallery.css";
+import {
+  GalleryContainer,
+  GalleryControls,
+  GalleryNumbers,
+  GalleryArrow,
+  InputRange,
+  GalleryZoom,
+  GalleryLinksBox,
+  GalleryLink,
+  WebLinkImg,
+  GitLinkImg,
+  GalleryPic,
+  GalleryPicWide,
+} from "./styled/Gallery.styled";
 
 interface Props {
   toggleGallery: boolean;
@@ -43,122 +56,113 @@ export const Gallery: React.FC<Props> = ({
   );
 
   return (
-    <>
-      {selectedProject && projects[selectedProject].pics && (
-        <div className="galleryContainer">
-          <img
-            className={
-              (!toggleGallery && "galleryPic") ||
-              (toggleGallery && "galleryPicWide") ||
-              undefined
-            }
-            src={
-              (loaded && projects[selectedProject].pics[counter].pic) ||
-              "./loading.gif"
-            }
-            style={{ animation: `fadeIn 2s` }}
-            onLoad={(e) => {
-              setLoaded(true);
-            }}
-          ></img>
-
-          {projects[selectedProject].pics.length != 1 && (
-            <div className="galleryControls">
-              <div className="galleryNumbers">
-                {counter + 1}/{projects[selectedProject].pics.length}
-              </div>
-              <div
-                className="prvGallery"
-                title="Previous"
-                onClick={() => {
-                  if (counter > 0) {
-                    setCounter(counter - 1);
-                  } else {
-                    return;
-                  }
-                }}
-              >
-                ◄
-              </div>
-              <input
-                value={counter}
-                type="range"
-                className="rangeInput"
-                min={0}
-                max={maxItems}
-                onChange={(e) => {
-                  setCounter(parseInt(e.target.value));
-                }}
-              ></input>
-              <div
-                className="nxtGallery"
-                title="Next"
-                onClick={() => {
-                  if (counter < maxItems || counter == 0) {
-                    setCounter(counter + 1);
-                  }
-                }}
-              >
-                ►
-              </div>
-
-              <img
-                src="./zoom.png"
-                className="zoom"
-                title="Zoom"
-                onClick={() => {
-                  if (!toggleGallery) {
-                    setToggleGallery(true);
-                    setTimeout(() => {
-                      if (galRef?.current) {
-                        scrollTo(galRef.current.offsetTop, "smooth");
-                      }
-                    }, 700);
-                  } else {
-                    setToggleGallery(false);
-                  }
-                }}
-              ></img>
-            </div>
-          )}
-
-          {projects[selectedProject] &&
-            !toggleGallery &&
-            projects.map((project: any) => (
-              <React.Fragment key={project.id}>
-                {projects[selectedProject].id == project.id && (
-                  <div className="descLinks" key={project.id}>
-                    {project.url && selectedProject != 0 && (
-                      <a
-                        className="linkPreview"
-                        href={project.url}
-                        target="_blank"
-                        title="Open Project"
-                      >
-                        <img src="./linkPreview.png"></img>
-                      </a>
-                    )}
-                    {project.url && selectedProject == 0 && (
-                      <Link className="linkPreview" to="/" title="Open Project">
-                        <img src="./linkPreview.png"></img>
-                      </Link>
-                    )}
-                    {project.git && (
-                      <a
-                        className="git"
-                        href={project.git}
-                        target="_blank"
-                        title="Check Code"
-                      >
-                        <img src="./git.png"></img>
-                      </a>
-                    )}
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-        </div>
+    <GalleryContainer>
+      {!toggleGallery && (
+        <GalleryPic
+          src={
+            (loaded && projects[selectedProject].pics[counter].pic) ||
+            "./loading.gif"
+          }
+          onLoad={(e) => {
+            setLoaded(true);
+          }}
+        ></GalleryPic>
       )}
-    </>
+      {toggleGallery && (
+        <GalleryPicWide
+          src={
+            (loaded && projects[selectedProject].pics[counter].pic) ||
+            "./loading.gif"
+          }
+          onLoad={(e) => {
+            setLoaded(true);
+          }}
+        ></GalleryPicWide>
+      )}
+
+      {projects[selectedProject].pics.length != 1 && (
+        <GalleryControls>
+          <GalleryNumbers>
+            {counter + 1}/{projects[selectedProject].pics.length}
+          </GalleryNumbers>
+          <GalleryArrow
+            title="Previous"
+            onClick={() => {
+              if (counter > 0) {
+                setCounter(counter - 1);
+              } else {
+                return;
+              }
+            }}
+          >
+            ◄
+          </GalleryArrow>
+          <InputRange
+            value={counter}
+            type="range"
+            min={0}
+            max={maxItems}
+            onChange={(e) => {
+              setCounter(parseInt(e.target.value));
+            }}
+          ></InputRange>
+          <GalleryArrow
+            title="Next"
+            onClick={() => {
+              if (counter < maxItems || counter == 0) {
+                setCounter(counter + 1);
+              }
+            }}
+          >
+            ►
+          </GalleryArrow>
+
+          <GalleryZoom
+            src="./zoom.png"
+            title="Zoom"
+            onClick={() => {
+              if (!toggleGallery) {
+                setToggleGallery(true);
+                setTimeout(() => {
+                  if (galRef?.current) {
+                    scrollTo(galRef.current.offsetTop, "smooth");
+                  }
+                }, 700);
+              } else {
+                setToggleGallery(false);
+              }
+            }}
+          ></GalleryZoom>
+        </GalleryControls>
+      )}
+
+      {!toggleGallery && (
+        <GalleryLinksBox>
+          {projects[selectedProject].url && selectedProject != 0 && (
+            <GalleryLink
+              href={projects[selectedProject].url}
+              target="_blank"
+              title="Open Project"
+            >
+              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
+            </GalleryLink>
+          )}
+          {projects[selectedProject].url && selectedProject == 0 && (
+            <Link to="/" title="Open Project">
+              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
+            </Link>
+          )}
+          {projects[selectedProject].git && (
+            <GalleryLink
+              href={projects[selectedProject].git}
+              target="_blank"
+              title="Check Code"
+            >
+              <GitLinkImg src="./git.png"></GitLinkImg>
+            </GalleryLink>
+          )}
+        </GalleryLinksBox>
+      )}
+    </GalleryContainer>
   );
 };

@@ -20,7 +20,7 @@ export const Latest = styled.div`
 
   div {
     background-color: black;
-    width: 50vw !important;
+    width: 50vw;
     padding: 1vmax 2vmax;
     animation: blinker 6s linear infinite;
   }
@@ -47,11 +47,11 @@ export const FeaturedBoxBack = styled.div`
   margin-bottom: 5vh;
 
   ${mediaQueries("100", "480", "portrait")`
-      width: 90vw !important;
+      width: 90vw ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-            width: 94vw !important;
+            width: 94vw ;
 `}
 `;
 
@@ -73,14 +73,14 @@ export const FeaturedBox = styled.div`
     flex-direction: row;
     justify-content: center;
     height: unset;
-    min-height: 42vh !important;
+    min-height: 42vh ;
     overflow-y: scroll;
-    width: 90vw !important;
+    width: 90vw ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-            height: unset !important;
-    width: 94vw !important;
+            height: unset ;
+    width: 94vw ;
 `}
 `;
 
@@ -88,8 +88,8 @@ export const ProjectLink = styled(Link)`
   text-decoration: none;
 
   ${mediaQueries("100", "480", "portrait")`
-       flex-direction: column !important;
-    height: fit-content !important;
+       flex-direction: column ;
+    height: fit-content ;
 `}
 `;
 
@@ -116,8 +116,8 @@ export const Project = styled.div`
   height: 20vmax;
 
   ${mediaQueries("100", "480", "portrait")`
-      margin: 2vmax !important;
-    width: 35vw !important;
+      margin: 2vmax ;
+    width: 35vw ;
 `}
 `;
 
@@ -136,11 +136,11 @@ export const ProjectName = styled.div`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-    margin-bottom: 0.5vmax !important;
+    margin-bottom: 0.5vmax ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-  margin-bottom: 0.5vmax !important;
+  margin-bottom: 0.5vmax ;
 `}
 `;
 
@@ -171,11 +171,11 @@ export const ProjectImg = styled.img`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-   padding: 2vmax !important;
+   padding: 2vmax ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-    padding: 2vmax !important;
+    padding: 2vmax ;
 `}
 `;
 
@@ -188,8 +188,8 @@ export const HotSign = styled.img`
   margin-top: -3vmax;
 
   ${mediaQueries("100", "480", "portrait")`
-  width: 6vmax !important;
-    height: 8vmax !important;
+  width: 6vmax ;
+    height: 8vmax ;
 `}
 `;
 

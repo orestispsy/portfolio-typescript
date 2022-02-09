@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 import { Gallery } from "../Gallery/Gallery";
 
-import "./Project.css";
+import {
+  ProjectContainer,
+  CloseTab,
+  ProjectSection,
+  ProjectInfoBoxBack,
+  ProjectInfoBox,
+  ProjectText,
+  Features,
+  FeatureHead,
+  FeatureItem,
+  ScrollBox,
+  ScrollUp,
+  ScrollDown,
+} from "./styled/Project.styled";
+
+const { projectWindowScroller } = require("./ProjectUtils");
 
 interface Props {
   setProject: (e: any) => void;
@@ -40,118 +54,86 @@ export const Project: React.FC<Props> = ({
   }, []);
 
   return (
-    <>
-      <div
-        className="projectBoxBack"
-        id="projectBoxBack"
-        style={{
-          marginTop: selectedProject ? "3vmax" : "none",
-        }}
-      >
-        {!toggleGallery && (
-          <Link
-            to={"/"}
-            className="closeTab"
-            onClick={() => {
-              setProjectView(true);
-            }}
-          >
-            X
-          </Link>
-        )}
+    <ProjectContainer>
+      {!toggleGallery && (
+        <CloseTab
+          to={"/"}
+          onClick={() => {
+            setProjectView(true);
+          }}
+        >
+          X
+        </CloseTab>
+      )}
 
-        {projects &&
-          projects.map((project: any) => (
-            <React.Fragment key={project.id}>
-              {selectedProject == project.id && (
-                <div
-                  className="projectBox"
-                  id="projectBox"
-                  ref={galRef}
-                  style={{
-                    flexDirection: (selectedProject && `row`) || undefined,
-                  }}
-                >
-                  <Gallery
-                    projects={projects}
-                    selectedProject={selectedProject}
-                    toggleGallery={toggleGallery}
-                    setToggleGallery={setToggleGallery}
-                    galRef={galRef}
-                    scrollTo={scrollTo}
-                  />
-                  {!toggleGallery && (
-                    <div className="description">
-                      <div className="projectPreview">
-                        <div className="projectText" ref={elemRef}>
-                          {project.description && (
-                            <div className="features">Description</div>
+      {projects &&
+        projects.map((project: any) => (
+          <React.Fragment key={project.id}>
+            {selectedProject == project.id && (
+              <ProjectSection ref={galRef}>
+                <Gallery
+                  projects={projects}
+                  selectedProject={selectedProject}
+                  toggleGallery={toggleGallery}
+                  setToggleGallery={setToggleGallery}
+                  galRef={galRef}
+                  scrollTo={scrollTo}
+                />
+                {!toggleGallery && (
+                  <ProjectInfoBoxBack>
+                    <ProjectInfoBox>
+                      <ProjectText ref={elemRef}>
+                        {project.description && (
+                          <FeatureHead>Description</FeatureHead>
+                        )}
+                        {project.description && project.description}
+                        <Features>
+                          {project.stack && (
+                            <FeatureHead marginT={"true"} width={"true"}>
+                              Tech
+                            </FeatureHead>
                           )}
-                          {project.description}
-                          <div className="featuresContainer">
-                            {project.stack && (
-                              <div className="features" id="features">
-                                Tech
-                              </div>
+                          {project.stack &&
+                            project.stack.map((item: string, index: number) => (
+                              <FeatureItem key={index}>{item}</FeatureItem>
+                            ))}
+                          {project.features && (
+                            <FeatureHead marginT={"true"} width={"true"}>
+                              Features
+                            </FeatureHead>
+                          )}
+                          {project.features &&
+                            project.features.map(
+                              (item: string, index: number) => (
+                                <FeatureItem key={index}>{item}</FeatureItem>
+                              )
                             )}
-                            {project.stack &&
-                              project.stack.map((feature: any) => (
-                                <div key={feature}>{feature}</div>
-                              ))}
-                            {project.features && (
-                              <div className="features" id="features">
-                                Features
-                              </div>
-                            )}
-                            {project.features &&
-                              project.features.map((feature: any) => (
-                                <div key={feature}>{feature}</div>
-                              ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  {!toggleGallery && (
-                    <div className="projectScroll">
-                      <div
-                        className="projectUp"
-                        title="Top"
-                        onMouseDown={() => {
-                          var i = 10;
-                          var int: NodeJS.Timer = setInterval(function () {
-                            if (elemRef.current) {
-                              elemRef.current.scrollTop =
-                                elemRef.current.scrollTop - i;
-                              i += 10;
-                              if (i >= 200) clearInterval(int);
-                            }
-                          }, 20);
-                        }}
-                      ></div>
+                        </Features>
+                      </ProjectText>
+                    </ProjectInfoBox>
+                  </ProjectInfoBoxBack>
+                )}
+                {!toggleGallery && (
+                  <ScrollBox>
+                    <ScrollUp
+                      title="Top"
+                      onMouseDown={(e: any) => {
+                        projectWindowScroller(elemRef, 10, 10, 200, -1);
+                      }}
+                    ></ScrollUp>
 
-                      <div
-                        className="projectDown"
-                        title="Scroll Down"
-                        onMouseDown={() => {
-                          var i = 0;
-                          var int: NodeJS.Timer = setInterval(function () {
-                            if (elemRef.current) {
-                              elemRef.current.scrollTop =
-                                elemRef.current.scrollTop + i;
-                              i += 1;
-                              if (i >= 20) clearInterval(int);
-                            }
-                          }, 20);
-                        }}
-                      ></div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </React.Fragment>
-          ))}
-      </div>
-    </>
+                    <ScrollDown
+                      title="Scroll Down"
+                      onMouseDown={(e: any) => {
+                        projectWindowScroller(elemRef, 0, 1, 20, +1);
+                      }}
+                    ></ScrollDown>
+                  </ScrollBox>
+                )}
+              </ProjectSection>
+            )}
+          </React.Fragment>
+        ))}
+    </ProjectContainer>
   );
 };

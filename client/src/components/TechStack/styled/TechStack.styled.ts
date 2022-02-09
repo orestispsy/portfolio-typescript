@@ -19,17 +19,17 @@ export const TechStackBox = styled.div`
   border: 10px solid black;
 
   ${mediaQueries("100", "480", "portrait")`
-      width: 60vw !important;
+      width: 60vw ;
     flex-wrap: wrap;
-    border-radius: 2vmax !important;
-    border: none !important;
-    margin-top: -3vh !important;
+    border-radius: 2vmax ;
+    border: none ;
+    margin-top: -3vh ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
- padding: 0.5vmax !important;
-    border-radius: 20vh !important;
-    margin-bottom: -3vh !important;
+ padding: 0.5vmax ;
+    border-radius: 20vh ;
+    margin-bottom: -3vh ;
 `}
 `;
 

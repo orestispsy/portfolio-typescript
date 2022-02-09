@@ -25,7 +25,7 @@ export const AppContainer = styled.div`
   animation: fadeIn 0.5s;
 
   ${mediaQueries("100", "480", "portrait")`
-          width: 80vw !important;
+          width: 80vw ;
 `}
 `;
 
@@ -44,7 +44,7 @@ export const TopMenuBar = styled.div`
   border-bottom: 2px solid white;
 
   ${mediaQueries("100", "480", "portrait")`
-          width: 80vw !important;
+          width: 80vw ;
 `}
 `;
 
@@ -56,8 +56,8 @@ export const TopMenuLinks = styled.div`
   width: 25vw;
 
   ${mediaQueries("100", "480", "portrait")`
-         margin: 2vmax !important;
-    width: 49vw !important;
+         margin: 2vmax ;
+    width: 49vw ;
 `}
 `;
 

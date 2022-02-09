@@ -7,8 +7,14 @@ interface Props {
   bioView: boolean;
   mute: boolean;
   setMute: (e: any) => void;
-  letMusic: () => void;
+  letMusic: (
+    mute: boolean,
+    play: () => void,
+    setMute: (e: boolean) => void,
+    stop: () => void
+  ) => void;
   stop: () => void;
+  play: () => void;
   scrollTo: (e: any, e2?: ScrollBehavior | undefined) => void;
 }
 
@@ -20,6 +26,7 @@ export const Bio: React.FC<Props> = ({
   letMusic,
   stop,
   scrollTo,
+  play,
 }) => {
   return (
     <MainBox>
@@ -48,7 +55,7 @@ export const Bio: React.FC<Props> = ({
               col={(mute && "red") || "orange"}
               anime={(mute && true) || false}
               onClick={() => {
-                letMusic();
+                letMusic(mute, play, setMute, stop);
               }}
             >
               right turn

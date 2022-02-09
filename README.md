@@ -1,4 +1,4 @@
-# My Portfolio [React + Typescript + Styled Components]
+# Portfolio [React + Typescript + Styled Components]
 
 ## Demo
  

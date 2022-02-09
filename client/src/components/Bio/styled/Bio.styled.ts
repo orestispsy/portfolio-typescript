@@ -36,8 +36,8 @@ export const MainBox = styled.div`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-    width: 80vw !important;
-    margin-bottom: 1vmax !important;
+    width: 80vw ;
+    margin-bottom: 1vmax ;
      div:nth-child(1) {
     font-size: 3.5vmax;
   }
@@ -45,9 +45,9 @@ export const MainBox = styled.div`
 
   ${mediaQueries("273", "1024", "landscape")`
       
-    width: 84vw !important;
+    width: 84vw ;
    div:nth-child(1) {
-    font-size: 4vmax !important;
+    font-size: 4vmax ;
   }
 `}
 `;
@@ -66,8 +66,8 @@ export const BioText = styled.div`
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-  font-size: 3vmax !important;
-    width: 75vw !important;
+  font-size: 3vmax ;
+    width: 75vw ;
   
 `}
 `;
@@ -102,12 +102,12 @@ export const More = styled.span<SpanTypes>`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-      font-size: 3vmax !important;
+      font-size: 3vmax ;
         margin: 0 1vmax;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-     font-size: 3vmax !important;
+     font-size: 3vmax ;
   margin: 0 1vmax;
 `}
 `;

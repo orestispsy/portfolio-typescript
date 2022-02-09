@@ -26,12 +26,12 @@ export const EmailFormContainer = styled.div`
   animation: fadeIn 4s;
 
   ${mediaQueries("100", "480", "portrait")`
-        height: 70vh !important;
+        height: 70vh ;
         flex-direction: column-reverse;
-        width: 76vw !important;
-        border: 2px solid black !important;
+        width: 76vw ;
+        border: 2px solid black ;
         box-shadow: -0 0 3px rgba(0, 0, 0, 0.25), 0 -0 3px rgba(0, 0, 0, 0.25),
-            0 0 3px rgba(0, 0, 0, 0.25), -0 -0 3px rgba(0, 0, 0, 0.25) !important;
+            0 0 3px rgba(0, 0, 0, 0.25), -0 -0 3px rgba(0, 0, 0, 0.25) ;
 `}
 
   @keyframes fadeIn {
@@ -59,8 +59,8 @@ export const InputHead = styled.div`
   font-size: 2vmax;
 
   ${mediaQueries("100", "480", "portrait")`
-            font-size: 3vmax !important;
-            margin-bottom: 1vmax !important;
+            font-size: 3vmax ;
+            margin-bottom: 1vmax ;
 `}
 `;
 
@@ -75,14 +75,14 @@ export const Input = styled.input`
   margin-bottom: 3vh;
 
   ${mediaQueries("100", "480", "portrait")`
-            width: 40vw !important;
-            height: 5vh !important;
+            width: 40vw ;
+            height: 5vh ;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-              margin-top: 0.5vmax !important;
-            width: 20vw !important;
-            height: 10vh !important;
+              margin-top: 0.5vmax ;
+            width: 20vw ;
+            height: 10vh ;
 `}
 `;
 
@@ -103,12 +103,12 @@ export const TextArea = styled.textarea`
   resize: none;
   outline: none;
   padding: 2vh;
-  border-radius: 1vmax !important;
+  border-radius: 1vmax;
 
   ${mediaQueries("100", "480", "portrait")`
-                 width: 65vw !important;
-            height: 30vh !important;
-            margin-bottom: 1vmax !important;
+                 width: 65vw ;
+            height: 30vh ;
+            margin-bottom: 1vmax ;
 `}
 `;
 
@@ -133,7 +133,7 @@ export const SendButton = styled.div<Types>`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-           font-size: 4vmax !important;
+           font-size: 4vmax ;
 `}
 `;
 
@@ -174,15 +174,15 @@ export const CloseTab = styled(Link)`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-           margin-right: -1vmax !important;
-            font-size: 2vmax !important;
+           margin-right: -1vmax ;
+            font-size: 2vmax ;
             padding: 0.4vmax 0.8vmax;
                 align-self: flex-end;
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
-            margin: -1vmax -1vmax 0 0!important;
-            font-size: 2vmax !important;
+            margin: -1vmax -1vmax 0 0;
+            font-size: 2vmax ;
             padding: 0.4vmax 0.8vmax;
 `}
 `;
@@ -211,6 +211,6 @@ export const EmailFormContainerBack = styled.div`
   margin-top: 5vh;
 
   ${mediaQueries("100", "480", "portrait")`
-         margin-top: 3vmax !important;
+         margin-top: 3vmax ;
 `}
 `;

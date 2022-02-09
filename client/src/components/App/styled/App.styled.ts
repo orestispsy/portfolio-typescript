@@ -14,6 +14,6 @@ export const AppContainer = styled.div`
   animation: fadeIn 0.5s;
 
   ${mediaQueries("100", "480", "portrait")`
-          width: 80vw !important;
+          width: 80vw;
 `}
 `;

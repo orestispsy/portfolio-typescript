@@ -4,6 +4,8 @@ import useSound from "use-sound";
 import { Bio } from "./../Bio/Bio";
 import { TechStack } from "../TechStack/TechStack";
 
+const { letMusic } = require("./MainUtils");
+
 import {
   MainContainer,
   Latest,
@@ -19,7 +21,7 @@ import {
   Footer,
 } from "./styled/Main.styled";
 
-const music = require("./assets/alice.mp3");
+const music = require("./../../../public/alice.mp3");
 
 interface Props {
   setProject: (e: any) => void;
@@ -47,19 +49,9 @@ export const Main: React.FC<Props> = ({
     },
   });
 
-  const [bioView, setBioView] = useState(false);
+  const [bioView, setBioView] = useState<boolean>(false);
 
   const projRef = useRef<HTMLDivElement | null>(null);
-
-  const letMusic = () => {
-    if (!mute) {
-      setMute(true);
-      play();
-    } else {
-      stop();
-      setMute(false);
-    }
-  };
 
   useEffect(function () {
     setProject(false);
@@ -83,9 +75,10 @@ export const Main: React.FC<Props> = ({
         bioView={bioView}
         mute={mute}
         setMute={(e: boolean) => setMute(e)}
-        letMusic={() => letMusic()}
+        letMusic={letMusic}
         stop={() => stop()}
         scrollTo={scrollTo}
+        play={play}
       ></Bio>
 
       <Latest ref={projRef}>
