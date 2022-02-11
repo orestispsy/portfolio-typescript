@@ -9,7 +9,7 @@ export const projects = [
         speaking about myself ! Refactored with Typescript & React Styled Components.`,
     preview: "./previewPortfolio.jpg",
     url: "https://zero-psy.com/portfolio",
-    git: "https://github.com/orestispsy/portfolio",
+    git: "https://github.com/orestispsy/portfolio-typescript",
     pics: [{ pic: "./projectPics/pf1.jpg" }],
     features: [
       "Bio",
@@ -119,7 +119,7 @@ export const projects = [
   },
 
   {
-    id: 4,
+    id: 3,
     hot: false,
     remastered: true,
     name: "Connect4",
@@ -149,7 +149,7 @@ export const projects = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     name: "zero-psy",
     description: `This is the landing page of my main domain. Here I am experimenting
          with Element object methods in the HTML DOM, doing multiple CSS / Javascript

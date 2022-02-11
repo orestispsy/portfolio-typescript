@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, HashRouter } from "react-router-dom";
 import { Project } from "./../Project/Project";
 import { EmailForm } from "./../EmailForm/EmailForm";
@@ -20,6 +20,17 @@ export const App: React.FC<Props> = ({}) => {
   const [mute, setMute] = useState<boolean>(false);
   const [projectView, setProjectView] = useState<boolean>(false);
   const [emailView, setEmailView] = useState<boolean>(false);
+  const [viewCount, setViewCount] = useState<number>(0);
+
+  useEffect(function () {
+    setTimeout((e: boolean) => {
+      setViewCount(viewCount + 1);
+    }, 1500);
+
+    setTimeout((e: boolean) => {
+      setViewCount(viewCount + 2);
+    }, 1700);
+  }, []);
 
   return (
     <HashRouter hashType="noslash">
@@ -29,6 +40,8 @@ export const App: React.FC<Props> = ({}) => {
           projects={projects}
           emailView={emailView}
           setEmailView={(e: any) => setEmailView(e)}
+          ProjectView={projectView}
+          viewCount={viewCount}
         />
 
         <Route
@@ -43,6 +56,8 @@ export const App: React.FC<Props> = ({}) => {
               mute={mute}
               projectView={projectView}
               scrollTo={scrollTo}
+              viewCount={viewCount}
+              setViewCount={(e: number) => setViewCount(e)}
             />
           )}
         />

@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { mediaQueries } from "../../../common/mediaQueries";
 
+type MainTypes = {
+  viewCount: number;
+};
+
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -9,7 +13,7 @@ export const MainContainer = styled.div`
   justify-content: center;
 `;
 
-export const Latest = styled.div`
+export const Latest = styled.div<MainTypes>`
   display: flex;
   justify-content: center;
   font-family: "Poller One", cursive;
@@ -22,7 +26,10 @@ export const Latest = styled.div`
     background-color: black;
     width: 50vw;
     padding: 1vmax 2vmax;
-    animation: blinker 6s linear infinite;
+    animation: ${(props) =>
+      (props.viewCount <= 1 &&
+        `blinker 6s linear infinite, fadeIn 6s ease-in-out`) ||
+      (props.viewCount > 1 && `blinker 6s linear infinite`)};
   }
 
   @keyframes blinker {
@@ -32,7 +39,7 @@ export const Latest = styled.div`
   }
 `;
 
-export const FeaturedBoxBack = styled.div`
+export const FeaturedBoxBack = styled.div<MainTypes>`
   border: 2px solid black;
   box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
     0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
@@ -46,9 +53,39 @@ export const FeaturedBoxBack = styled.div`
   align-items: center;
   margin-bottom: 5vh;
 
-  ${mediaQueries("100", "480", "portrait")`
-      width: 90vw ;
-`}
+  animation: ${(props) =>
+    (props.viewCount > 1 && `resize2 1s,fadeInMain 1s ease-in-out`) ||
+    (props.viewCount > 1 && `none`)};
+  visibility: ${(props) => (props.viewCount > 1 && `visible`) || `hidden`};
+  @keyframes resize2 {
+    0% {
+      width: 85vw;
+    }
+
+    100% {
+      width: 95vw;
+    }
+  }
+
+  @keyframes resize2Portrait {
+    0% {
+      width: 85vw;
+    }
+
+    100% {
+      width: 90vw;
+    }
+  }
+
+  @keyframes fadeInMain {
+    0% {
+      opacity: 0%;
+    }
+
+    40% {
+      opacity: 100%;
+    }
+  }
 
   ${mediaQueries("273", "1024", "landscape")`
             width: 94vw ;
@@ -90,6 +127,7 @@ export const ProjectLink = styled(Link)`
   ${mediaQueries("100", "480", "portrait")`
        flex-direction: column ;
     height: fit-content ;
+      margin: 0 2vmax;
 `}
 `;
 
@@ -113,7 +151,7 @@ export const Project = styled.div`
   color: black;
   font-size: 3vmax;
   cursor: pointer;
-  height: 20vmax;
+  height: 24vmax;
 
   ${mediaQueries("100", "480", "portrait")`
       margin: 2vmax ;
@@ -130,6 +168,7 @@ export const ProjectName = styled.div`
   text-align: center;
   letter-spacing: 1px;
   border: 2px solid black;
+  padding: 0 0.5vmax;
 
   &:hover {
     color: rgb(229, 255, 0);
@@ -137,6 +176,8 @@ export const ProjectName = styled.div`
 
   ${mediaQueries("100", "480", "portrait")`
     margin-bottom: 0.5vmax ;
+   white-space: nowrap;
+
 `}
 
   ${mediaQueries("273", "1024", "landscape")`
@@ -214,5 +255,10 @@ export const Footer = styled.div`
     text-decoration: none;
     color: white;
     cursor: pointer;
+  }
+
+  a:hover {
+    text-shadow: 0 0 3px cyan, 0 0 3px cyan, 0 0 3px cyan, 0 0 3px cyan;
+    color: yellow;
   }
 `;

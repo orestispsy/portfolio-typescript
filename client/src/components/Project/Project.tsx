@@ -49,7 +49,7 @@ export const Project: React.FC<Props> = ({
 
   useEffect(function () {
     setProject(id);
-    setProjectView(false);
+    setProjectView(true);
     scrollTo(0, "smooth");
   }, []);
 

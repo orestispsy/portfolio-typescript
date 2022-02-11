@@ -20,17 +20,20 @@ import {
   RemasteredSign,
   Footer,
 } from "./styled/Main.styled";
+import { BrowserRouter } from "react-router-dom";
 
 const music = require("./../../../public/alice.mp3");
 
 interface Props {
   setProject: (e: any) => void;
-  selectedProject: any;
+  selectedProject: number | boolean;
   projects: any;
   mute: boolean;
   setMute: (e: any) => void;
   projectView: boolean;
   scrollTo: (e: any, e2?: ScrollBehavior | undefined) => void;
+  setViewCount: (e: number) => void;
+  viewCount: number;
 }
 
 export const Main: React.FC<Props> = ({
@@ -41,6 +44,9 @@ export const Main: React.FC<Props> = ({
   setMute,
   projectView,
   scrollTo,
+
+  setViewCount,
+  viewCount,
 }) => {
   const [play, { stop }] = useSound(music, {
     volume: 0.75,
@@ -55,9 +61,6 @@ export const Main: React.FC<Props> = ({
 
   useEffect(function () {
     setProject(false);
-  }, []);
-
-  useEffect(function () {
     if (projectView) {
       const timer: NodeJS.Timeout = setTimeout(() => {
         if (projRef.current) {
@@ -79,13 +82,15 @@ export const Main: React.FC<Props> = ({
         stop={() => stop()}
         scrollTo={scrollTo}
         play={play}
+        viewCount={viewCount}
+        setViewCount={(e: number) => setViewCount(e)}
       ></Bio>
 
-      <Latest ref={projRef}>
+      <Latest viewCount={viewCount} ref={projRef}>
         <div>LATEST PROJECTS</div>
       </Latest>
 
-      <FeaturedBoxBack>
+      <FeaturedBoxBack viewCount={viewCount}>
         <FeaturedBox>
           {projects &&
             projects.map((project: any) => (
@@ -98,7 +103,7 @@ export const Main: React.FC<Props> = ({
                       setProject(project.id);
                     }}
                   >
-                    <Project>
+                    <Project onClick={(e) => setViewCount(viewCount + 1)}>
                       <ProjectName>{project.name}</ProjectName>
                       <ProjectImg src={project.preview}></ProjectImg>
                       {project.hot && selectedProject == 0 && (

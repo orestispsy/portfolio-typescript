@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { mediaQueries } from "../../../common/mediaQueries";
 
 export const AppContainer = styled.div`
@@ -11,7 +10,6 @@ export const AppContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   background-color: rgb(0, 0, 0);
-  animation: fadeIn 0.5s;
 
   ${mediaQueries("100", "480", "portrait")`
           width: 80vw;

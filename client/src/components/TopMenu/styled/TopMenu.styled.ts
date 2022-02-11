@@ -12,40 +12,67 @@ type LinkTypes = {
   target: string;
   title: string;
 };
+type topMenuBarTypes = {
+  viewCount: number;
+};
 
-export const AppContainer = styled.div`
-  margin-top: 4vh;
-  min-height: 96vh;
-  width: 90vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: rgb(0, 0, 0);
-  animation: fadeIn 0.5s;
-
-  ${mediaQueries("100", "480", "portrait")`
-          width: 80vw ;
-`}
-`;
-
-export const AppBox = styled.div`
+export const TopMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  animation: fadeIn 3s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0%;
+      visibility: hidden;
+    }
+
+    50% {
+      visibility: visible;
+    }
+
+    100% {
+      opacity: 100%;
+    }
+  }
 `;
 
-export const TopMenuBar = styled.div`
+export const TopMenuBar = styled.div<topMenuBarTypes>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90vw;
+  width: ${(props) => (props.viewCount >= 1 && `90vw`) || ``};
+
   border-bottom: 2px solid white;
+  animation: ${(props) => props.viewCount == 1 && `topBarLine 1s`};
 
   ${mediaQueries("100", "480", "portrait")`
           width: 80vw ;
+            animation: topBarLinePortrait 3s;
 `}
+
+  @keyframes topBarLine {
+    0% {
+      width: 40vw;
+    }
+
+    100% {
+      width: 100vw;
+    }
+  }
+
+  @keyframes topBarLinePortrait {
+    0% {
+      width: 65vw;
+    }
+
+    100% {
+      width: 80vw;
+    }
+  }
 `;
 
 export const TopMenuLinks = styled.div`
@@ -96,4 +123,14 @@ export const Headline = styled(Link)`
   padding: 0 1vmax;
   color: white;
   text-decoration: none;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0%;
+    }
+
+    100% {
+      opacity: 100%;
+    }
+  }
 `;

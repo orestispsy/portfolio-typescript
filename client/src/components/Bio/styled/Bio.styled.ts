@@ -7,7 +7,15 @@ type SpanTypes = {
   col?: string;
 };
 
-export const MainBox = styled.div`
+type MainBoxTypes = {
+  viewCount: number;
+};
+
+type BioTextTypes = {
+  viewCount: number;
+};
+
+export const MainBox = styled.div<MainBoxTypes>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +30,9 @@ export const MainBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  animation: ${(props) =>
+    (props.viewCount < 1 && `fadeIn 1s ease-in-out`) || ""};
 
   div:nth-child(1) {
     font-size: 3vmax;
@@ -52,11 +63,14 @@ export const MainBox = styled.div`
 `}
 `;
 
-export const BioText = styled.div`
+export const BioText = styled.div<BioTextTypes>`
   width: 55vw;
   text-indent: 30px;
   padding-bottom: 1vmax;
   text-align: justify;
+
+  animation: ${(props) =>
+    (props.viewCount <= 2 && `fadeIn 1s ease-in-out`) || ""};
 
   ${mediaQueries("100", "480", "portrait")`
   width: 65vw;

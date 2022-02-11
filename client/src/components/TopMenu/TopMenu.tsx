@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
-  AppBox,
+  TopMenuContainer,
   TopMenuBar,
   TopMenuLinks,
   Headline,
@@ -13,9 +13,11 @@ import {
 
 interface Props {
   setEmailView: (e: any) => void;
-  selectedProject: any;
+  selectedProject: number;
   projects: any;
   emailView: boolean;
+  ProjectView: boolean;
+  viewCount: number;
 }
 
 export const TopMenu: React.FC<Props> = ({
@@ -23,13 +25,15 @@ export const TopMenu: React.FC<Props> = ({
   setEmailView,
   emailView,
   projects,
+  ProjectView,
+  viewCount,
 }) => {
   return (
-    <AppBox>
-      <TopMenuBar>
+    <TopMenuContainer>
+      <TopMenuBar viewCount={viewCount}>
         <Headline to={"/"}>
           {!selectedProject && "Orestis Psycharis"}
-          {selectedProject && projects[selectedProject].name}
+          {ProjectView && selectedProject && projects[selectedProject].name}
         </Headline>
       </TopMenuBar>
       {!selectedProject && (
@@ -83,6 +87,6 @@ export const TopMenu: React.FC<Props> = ({
           ></TopMenuLinkHat>
         </TopMenuLinks>
       )}
-    </AppBox>
+    </TopMenuContainer>
   );
 };

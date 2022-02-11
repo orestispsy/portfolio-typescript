@@ -63,6 +63,14 @@ export const Gallery: React.FC<Props> = ({
             (loaded && projects[selectedProject].pics[counter].pic) ||
             "./loading.gif"
           }
+          onClick={(e) => {
+            setToggleGallery(!toggleGallery);
+            setTimeout(() => {
+              if (galRef?.current) {
+                scrollTo(galRef.current.offsetTop, "smooth");
+              }
+            }, 700);
+          }}
           onLoad={(e) => {
             setLoaded(true);
           }}
@@ -74,6 +82,7 @@ export const Gallery: React.FC<Props> = ({
             (loaded && projects[selectedProject].pics[counter].pic) ||
             "./loading.gif"
           }
+          onClick={(e) => setToggleGallery(!toggleGallery)}
           onLoad={(e) => {
             setLoaded(true);
           }}

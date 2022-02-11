@@ -35,7 +35,7 @@ export const CloseTab = styled(Link)`
   color: black;
   text-decoration: none;
   font-size: 1vmax;
-  margin: 1vmax;
+  margin: 1.5vmax;
   box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
     0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
   border: 1px solid black;
@@ -72,19 +72,7 @@ export const ProjectSection = styled.div`
   border-radius: 5vh;
   padding: 0 0 3vmax 0;
   background-color: white;
-  animation: fadeIn 1s ease-in-out;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0%;
-    }
-
-    100% {
-      opacity: 100%;
-    }
-  }
-
-  ${mediaQueries("100", "480", "portrait")`
+  animation: fadeIn 1s ease-in-out ${mediaQueries("100", "480", "portrait")`
        align-items: center;
     flex-direction: row;
     justify-content: center;
@@ -93,13 +81,11 @@ export const ProjectSection = styled.div`
     overflow-y: scroll;
     width: 90vw ;
         margin-top: 0.5vmax ;
-`}
-
-  ${mediaQueries("273", "1024", "landscape")`
+`} ${mediaQueries("273", "1024", "landscape")`
    flex-wrap: nowrap;
       height: unset ;
     width: 94vw ;
-`}
+`};
 `;
 
 export const ProjectInfoBoxBack = styled.div`
