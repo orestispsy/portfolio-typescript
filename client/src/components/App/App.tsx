@@ -22,8 +22,7 @@ export const App: React.FC<Props> = ({}) => {
   const [mute, setMute] = useState<boolean>(false);
   const [projectView, setProjectView] = useState<boolean>(false);
   const [emailView, setEmailView] = useState<boolean>(false);
-  const [viewCount, setViewCount] = useState<number>(0);
-
+  const [animationChecker, setAnimationChecker] = useState<boolean>(false);
   const [animateTopMenu, setAnimateTopMenu] = useState<boolean>(false);
   const [animateBio, setAnimateBio] = useState<boolean>(false);
   const [animateFeatures, setAnimateFeatures] = useState<boolean>(false);
@@ -73,6 +72,8 @@ export const App: React.FC<Props> = ({}) => {
               animateBio={animateBio}
               setAnimateFeatures={(e: boolean) => setAnimateFeatures(e)}
               animateFeatures={animateFeatures}
+              animationChecker={animationChecker}
+              setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
             />
           )}
         />
@@ -97,6 +98,8 @@ export const App: React.FC<Props> = ({}) => {
               projects={projects}
               setProjectView={(e: any) => setProjectView(e)}
               scrollTo={scrollTo}
+              setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
+              animationChecker={animationChecker}
             />
           )}
         />

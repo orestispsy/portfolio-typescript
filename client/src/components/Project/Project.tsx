@@ -26,6 +26,8 @@ interface Props {
   projects: any;
   setProjectView: any;
   scrollTo: (e: number, e2?: ScrollBehavior | undefined) => void;
+  setAnimationChecker: (e: boolean) => void;
+  animationChecker: boolean;
 }
 
 type params = {
@@ -38,6 +40,8 @@ export const Project: React.FC<Props> = ({
   projects,
   setProjectView,
   scrollTo,
+  animationChecker,
+  setAnimationChecker,
 }) => {
   const [toggleGallery, setToggleGallery] = useState(false);
 
@@ -51,6 +55,7 @@ export const Project: React.FC<Props> = ({
     setProject(id);
     setProjectView(true);
     scrollTo(0, "smooth");
+    setAnimationChecker(true);
   }, []);
 
   return (

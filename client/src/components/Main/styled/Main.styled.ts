@@ -5,6 +5,7 @@ import { mediaQueries } from "../../../common/mediaQueries";
 type MainTypes = {
   animateFeatures?: boolean;
   animateBio?: boolean;
+  animationChecker?: boolean;
 };
 
 export const MainContainer = styled.div`
@@ -24,13 +25,13 @@ export const Latest = styled.div<MainTypes>`
   width: 60vw;
 
   div {
-    background-color: black;
     width: 50vw;
     padding: 1vmax 2vmax;
     visibility: ${(props) => (props.animateBio && `visible`) || `hidden`};
     animation: ${(props) =>
       (props.animateBio &&
-        `blinker 6s linear infinite, fadeIn 3s ease-in-out`) ||
+        !props.animationChecker &&
+        `blinker 6s linear infinite, fadeIn 2s ease-in-out`) ||
       `blinker 6s linear infinite`};
   }
 
@@ -54,8 +55,27 @@ export const FeaturedBoxBack = styled.div<MainTypes>`
   justify-content: center;
   align-items: center;
   margin-bottom: 5vh;
-  animation: ${(props) => (props.animateFeatures && `fadeIn 1.5s`) || ``};
+  animation: ${(props) =>
+    (props.animateFeatures &&
+      !props.animationChecker &&
+      ` resizeFeatures 2s ease-in-out`) ||
+    ``};
   visibility: ${(props) => (props.animateFeatures && `visible`) || `hidden`};
+
+  @keyframes resizeFeatures {
+    0% {
+      width: 81vw;
+      opacity: 0%;
+    }
+
+    70% {
+      opacity: 100%;
+    }
+
+    100% {
+      width: 95vw;
+    }
+  }
 
   ${mediaQueries("273", "1024", "landscape")`
             width: 94vw ;

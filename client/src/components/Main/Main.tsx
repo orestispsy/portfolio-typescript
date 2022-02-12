@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
 
-import { Bio } from "../../common/Bio";
+import { Bio } from "./../Bio/Bio";
 import { TechStack } from "../TechStack/TechStack";
 
 const { letMusic } = require("./MainUtils");
@@ -20,7 +20,6 @@ import {
   RemasteredSign,
   Footer,
 } from "./styled/Main.styled";
-import { BrowserRouter } from "react-router-dom";
 
 const music = require("./../../../public/alice.mp3");
 
@@ -36,6 +35,8 @@ interface Props {
   setAnimateBio: (e: boolean) => void;
   animateFeatures: boolean;
   setAnimateFeatures: (e: boolean) => void;
+  animationChecker: boolean;
+  setAnimationChecker: (e: boolean) => void;
 }
 
 export const Main: React.FC<Props> = ({
@@ -49,7 +50,8 @@ export const Main: React.FC<Props> = ({
   animateBio,
   setAnimateBio,
   animateFeatures,
-  setAnimateFeatures,
+  animationChecker,
+  setAnimationChecker,
 }) => {
   const [play, { stop }] = useSound(music, {
     volume: 0.75,
@@ -87,40 +89,49 @@ export const Main: React.FC<Props> = ({
         play={play}
         setAnimateBio={(e: boolean) => setAnimateBio(e)}
         animateBio={animateBio}
+        animationChecker={animationChecker}
+        setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
       ></Bio>
-
-      <Latest animateBio={animateBio} ref={projRef}>
-        <div>LATEST PROJECTS</div>
-      </Latest>
+      {animateFeatures && (
+        <Latest
+          animationChecker={animationChecker}
+          animateBio={animateBio}
+          ref={projRef}
+        >
+          <div>LATEST PROJECTS</div>
+        </Latest>
+      )}
 
       {animateFeatures && (
-        <FeaturedBoxBack animateFeatures={animateFeatures}>
+        <FeaturedBoxBack
+          animationChecker={animationChecker}
+          animateFeatures={animateFeatures}
+        >
           <FeaturedBox>
-            {projects &&
-              projects.map((project: any) => (
-                <ProjectLink to={`/projects/${project.id}`} key={project.id}>
-                  {(!selectedProject || selectedProject == project.id) && (
-                    <ProjectBack
-                      onClick={(e) => {
-                        setMute(false);
-                        stop();
-                        setProject(project.id);
-                      }}
-                    >
-                      <Project>
-                        <ProjectName>{project.name}</ProjectName>
-                        <ProjectImg src={project.preview}></ProjectImg>
-                        {project.hot && selectedProject == 0 && (
-                          <HotSign src="./hot.png" className="hot"></HotSign>
-                        )}
-                        {project.remastered && selectedProject == 0 && (
-                          <RemasteredSign>Remastered</RemasteredSign>
-                        )}
-                      </Project>
-                    </ProjectBack>
-                  )}
-                </ProjectLink>
-              ))}
+            {projects.map((project: any) => (
+              <ProjectLink to={`/projects/${project.id}`} key={project.id}>
+                {(!selectedProject || selectedProject == project.id) && (
+                  <ProjectBack
+                    onClick={(e) => {
+                      setMute(false);
+                      stop();
+                      setProject(project.id);
+                    }}
+                  >
+                    <Project>
+                      <ProjectName>{project.name}</ProjectName>
+                      <ProjectImg src={project.preview}></ProjectImg>
+                      {project.hot && selectedProject == 0 && (
+                        <HotSign src="./hot.png" className="hot"></HotSign>
+                      )}
+                      {project.remastered && selectedProject == 0 && (
+                        <RemasteredSign>Remastered</RemasteredSign>
+                      )}
+                    </Project>
+                  </ProjectBack>
+                )}
+              </ProjectLink>
+            ))}
           </FeaturedBox>
         </FeaturedBoxBack>
       )}

@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
 
   @keyframes topBarLine {
     0% {
-      width: 35vw;
+      width: 30vw;
     }
 
     100% {

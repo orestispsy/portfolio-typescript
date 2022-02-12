@@ -30,9 +30,9 @@ export const TopMenuBar = styled.div<topMenuBarTypes>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${(props) => (props.animateTopMenu && `90vw`) || ``};
+  width: ${(props) => (props.animateFeatures && `90vw`) || ``};
   border-bottom: 2px solid white;
-  animation: ${(props) => props.animateTopMenu && `topBarLine 3s ease-in-out`};
+  animation: ${(props) => props.animateFeatures && `topBarLine 2s ease-in-out`};
 
   ${mediaQueries("100", "480", "portrait")`
           width: 80vw ;

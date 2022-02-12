@@ -9,10 +9,12 @@ type SpanTypes = {
 
 type MainBoxTypes = {
   animateBio: boolean;
+  animationChecker: boolean;
 };
 
 type BioTextTypes = {
   animateBio: boolean;
+  animationChecker: boolean;
 };
 
 export const MainBox = styled.div<MainBoxTypes>`
@@ -26,12 +28,13 @@ export const MainBox = styled.div<MainBoxTypes>`
   text-align: center;
   font-family: "DarkerGrotesque";
   letter-spacing: 1px;
-  background-color: black;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   visibility: ${(props) => (!props.animateBio && `hidden`) || "visible"};
-  animation: ${(props) => (props.animateBio && `fadeIn 1s ease-in-out`) || ""};
+  animation: ${(props) =>
+    (props.animateBio && !props.animationChecker && `fadeIn 3s ease-in-out`) ||
+    ""};
 
   div:nth-child(1) {
     font-size: 3vmax;
@@ -68,7 +71,8 @@ export const BioText = styled.div<BioTextTypes>`
   padding-bottom: 1vmax;
   text-align: justify;
 
-  animation: ${(props) => props.animateBio && `fadeIn 0.5s ease-in-out`};
+  animation: ${(props) =>
+    props.animateBio && !props.animationChecker && `fadeIn 1.5s ease-in-out`};
 
   ${mediaQueries("100", "480", "portrait")`
   width: 65vw;
@@ -100,10 +104,10 @@ export const More = styled.span<SpanTypes>`
   margin: 0 0.5vmax 0 0.5vmax;
   cursor: pointer;
   font-size: 1.5vmax;
-  animation: ${(props) => props.anime && `fader 1s infinite`};
+  animation: ${(props) => props.anime && `player 1s infinite`};
   color: ${(props) => props.col && props.col};
 
-  @keyframes fader {
+  @keyframes player {
     50% {
       opacity: 0%;
     }
