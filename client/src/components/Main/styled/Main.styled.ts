@@ -191,9 +191,10 @@ export const ProjectImg = styled.img`
 
   &:hover {
     border: transparent;
-    padding: 14px;
+        padding: 14px;
     width: 13vmax;
     height: 13vmax;
+animation: blinkerButton 2s linear infinite;
   }
 
   &:active {
@@ -201,7 +202,10 @@ export const ProjectImg = styled.img`
   }
 
   ${mediaQueries("100", "480", "portrait")`
-   padding: 2vmax ;
+     padding: 2vmax ;
+    width: 12vmax;
+    height: 12vmax;
+   
 `}
 
   ${mediaQueries("273", "1024", "landscape")`

@@ -62,4 +62,12 @@ export const GlobalStyles = createGlobalStyle`
   }
 
 
+  @keyframes blinkerButton {
+    50% {
+        padding: 1vmax;
+        width: 11vmax;
+        height: 11vmax;
+    }
+}
+
 `;
