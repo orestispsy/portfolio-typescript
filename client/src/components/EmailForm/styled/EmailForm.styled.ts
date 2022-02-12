@@ -26,7 +26,7 @@ export const EmailFormContainer = styled.div`
   animation: fadeIn 4s;
 
   ${mediaQueries("100", "480", "portrait")`
-        height: 70vh ;
+    
         flex-direction: column-reverse;
         width: 76vw ;
         border: 2px solid black ;
@@ -154,10 +154,10 @@ export const Error = styled.div`
 
 export const CloseTab = styled(Link)`
   border-radius: 50%;
-  font-family: "Poller One", cursive;
   padding: 0.2vmax 0.4vmax;
   color: black;
   text-decoration: none;
+  font-family: "PollerOne";
   font-size: 1vmax;
   box-shadow: -0 0 5px rgba(0, 0, 0, 0.25), 0 -0 5px rgba(0, 0, 0, 0.25),
     0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
@@ -207,7 +207,7 @@ export const EmailFormContainerBack = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  font-family: "Bangers", cursive;
+  font-family: "Bangers";
   margin-top: 5vh;
 
   ${mediaQueries("100", "480", "portrait")`

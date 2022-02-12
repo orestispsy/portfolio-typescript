@@ -17,7 +17,9 @@ interface Props {
   projects: any;
   emailView: boolean;
   ProjectView: boolean;
-  viewCount: number;
+  animateFeatures: boolean;
+  animateTopMenu: boolean;
+  animateBio: boolean;
 }
 
 export const TopMenu: React.FC<Props> = ({
@@ -26,11 +28,17 @@ export const TopMenu: React.FC<Props> = ({
   emailView,
   projects,
   ProjectView,
-  viewCount,
+  animateFeatures,
+  animateTopMenu,
+  animateBio,
 }) => {
   return (
     <TopMenuContainer>
-      <TopMenuBar viewCount={viewCount}>
+      <TopMenuBar
+        animateTopMenu={animateTopMenu}
+        animateBio={animateBio}
+        animateFeatures={animateFeatures}
+      >
         <Headline to={"/"}>
           {!selectedProject && "Orestis Psycharis"}
           {ProjectView && selectedProject && projects[selectedProject].name}

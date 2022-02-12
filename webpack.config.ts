@@ -30,6 +30,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(woff2|woff|eot|ttf|otf)$/,
+        use: ["file-loader"],
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|mp3)$/i,
         type: "asset/resource",
       },

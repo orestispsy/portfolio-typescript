@@ -20,7 +20,7 @@ export const ProjectContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 3vmax;
-
+  animation: fadeIn 0.2s ease-in-out;
   ${mediaQueries("100", "480", "portrait")`
         width: 90vw ;
 `}
@@ -30,7 +30,7 @@ export const CloseTab = styled(Link)`
   align-self: flex-end;
   border-radius: 50%;
   cursor: pointer;
-  font-family: "Poller One", cursive;
+  font-family: "PollerOne";
   padding: 0.2vmax 0.4vmax;
   color: black;
   text-decoration: none;
@@ -72,7 +72,9 @@ export const ProjectSection = styled.div`
   border-radius: 5vh;
   padding: 0 0 3vmax 0;
   background-color: white;
-  animation: fadeIn 1s ease-in-out ${mediaQueries("100", "480", "portrait")`
+  animation: fadeIn 1s ease-in-out;
+
+  ${mediaQueries("100", "480", "portrait")`
        align-items: center;
     flex-direction: row;
     justify-content: center;
@@ -81,11 +83,13 @@ export const ProjectSection = styled.div`
     overflow-y: scroll;
     width: 90vw ;
         margin-top: 0.5vmax ;
-`} ${mediaQueries("273", "1024", "landscape")`
+`}
+
+  ${mediaQueries("273", "1024", "landscape")`
    flex-wrap: nowrap;
       height: unset ;
     width: 94vw ;
-`};
+`}
 `;
 
 export const ProjectInfoBoxBack = styled.div`
@@ -122,7 +126,7 @@ export const ProjectText = styled.div`
   width: 43vw;
   height: 55vh;
   text-align: justify;
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: "DarkerGrotesque";
   color: rgb(0, 0, 0);
   overflow-y: scroll;
   margin-bottom: 1vmax;
@@ -158,7 +162,7 @@ export const FeatureHead = styled.div<FeaturesHeadProps>`
   margin: 1vmax 0;
   margin-top: ${(props) => props.marginT && `4vmax`};
   font-size: 3vmax;
-  font-family: "Poller One", cursive;
+  font-family: "PollerOne";
   width: ${(props) => (props.width && `20vw`) || `43vw`};
   border-bottom: 1px solid black;
   text-align: center;

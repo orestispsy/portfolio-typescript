@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { mediaQueries } from "../../../common/mediaQueries";
 
 type MainTypes = {
-  viewCount: number;
+  animateFeatures?: boolean;
+  animateBio?: boolean;
 };
 
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const Latest = styled.div<MainTypes>`
   display: flex;
   justify-content: center;
-  font-family: "Poller One", cursive;
+  font-family: "PollerOne";
   font-size: 2vmax;
   text-align: center;
   color: yellow;
@@ -26,10 +27,11 @@ export const Latest = styled.div<MainTypes>`
     background-color: black;
     width: 50vw;
     padding: 1vmax 2vmax;
+    visibility: ${(props) => (props.animateBio && `visible`) || `hidden`};
     animation: ${(props) =>
-      (props.viewCount <= 1 &&
-        `blinker 6s linear infinite, fadeIn 6s ease-in-out`) ||
-      (props.viewCount > 1 && `blinker 6s linear infinite`)};
+      (props.animateBio &&
+        `blinker 6s linear infinite, fadeIn 3s ease-in-out`) ||
+      `blinker 6s linear infinite`};
   }
 
   @keyframes blinker {
@@ -52,40 +54,8 @@ export const FeaturedBoxBack = styled.div<MainTypes>`
   justify-content: center;
   align-items: center;
   margin-bottom: 5vh;
-
-  animation: ${(props) =>
-    (props.viewCount > 1 && `resize2 1s,fadeInMain 1s ease-in-out`) ||
-    (props.viewCount > 1 && `none`)};
-  visibility: ${(props) => (props.viewCount > 1 && `visible`) || `hidden`};
-  @keyframes resize2 {
-    0% {
-      width: 85vw;
-    }
-
-    100% {
-      width: 95vw;
-    }
-  }
-
-  @keyframes resize2Portrait {
-    0% {
-      width: 85vw;
-    }
-
-    100% {
-      width: 90vw;
-    }
-  }
-
-  @keyframes fadeInMain {
-    0% {
-      opacity: 0%;
-    }
-
-    40% {
-      opacity: 100%;
-    }
-  }
+  animation: ${(props) => (props.animateFeatures && `fadeIn 1.5s`) || ``};
+  visibility: ${(props) => (props.animateFeatures && `visible`) || `hidden`};
 
   ${mediaQueries("273", "1024", "landscape")`
             width: 94vw ;
@@ -97,7 +67,7 @@ export const FeaturedBox = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 95vw;
+  width: inherit;
   min-height: 19vmax;
   flex-wrap: wrap;
   padding-top: 2vmax;
@@ -123,7 +93,6 @@ export const FeaturedBox = styled.div`
 
 export const ProjectLink = styled(Link)`
   text-decoration: none;
-
   ${mediaQueries("100", "480", "portrait")`
        flex-direction: column ;
     height: fit-content ;
@@ -245,7 +214,7 @@ export const RemasteredSign = styled.div`
 `;
 
 export const Footer = styled.div`
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: "DarkerGrotesque";
   margin: 1vmax 0 2vmax 0;
   font-size: 1vmax;
   font-weight: bolder;
@@ -255,10 +224,12 @@ export const Footer = styled.div`
     text-decoration: none;
     color: white;
     cursor: pointer;
+    transition: 1s;
   }
 
   a:hover {
     text-shadow: 0 0 3px cyan, 0 0 3px cyan, 0 0 3px cyan, 0 0 3px cyan;
     color: yellow;
+    transition: 1s;
   }
 `;

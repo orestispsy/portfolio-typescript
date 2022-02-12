@@ -8,11 +8,11 @@ type SpanTypes = {
 };
 
 type MainBoxTypes = {
-  viewCount: number;
+  animateBio: boolean;
 };
 
 type BioTextTypes = {
-  viewCount: number;
+  animateBio: boolean;
 };
 
 export const MainBox = styled.div<MainBoxTypes>`
@@ -24,15 +24,14 @@ export const MainBox = styled.div<MainBoxTypes>`
   width: 60vw;
   height: fit-content;
   text-align: center;
-  font-family: "Darker Grotesque", sans-serif;
+  font-family: "DarkerGrotesque";
   letter-spacing: 1px;
   background-color: black;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  animation: ${(props) =>
-    (props.viewCount < 1 && `fadeIn 1s ease-in-out`) || ""};
+  visibility: ${(props) => (!props.animateBio && `hidden`) || "visible"};
+  animation: ${(props) => (props.animateBio && `fadeIn 1s ease-in-out`) || ""};
 
   div:nth-child(1) {
     font-size: 3vmax;
@@ -69,8 +68,7 @@ export const BioText = styled.div<BioTextTypes>`
   padding-bottom: 1vmax;
   text-align: justify;
 
-  animation: ${(props) =>
-    (props.viewCount <= 2 && `fadeIn 1s ease-in-out`) || ""};
+  animation: ${(props) => props.animateBio && `fadeIn 0.5s ease-in-out`};
 
   ${mediaQueries("100", "480", "portrait")`
   width: 65vw;

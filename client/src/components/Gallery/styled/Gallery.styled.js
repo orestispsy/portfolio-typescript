@@ -37,16 +37,6 @@ export const GalleryPic = styled.img`
   margin-top: 2vmax;
   animation: fadeIn 2s;
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0%;
-    }
-
-    100% {
-      opacity: 100%;
-    }
-  }
-
   ${mediaQueries("100", "480", "portrait")`
  width: 62vw !important;
     height: 36vw !important;
@@ -63,16 +53,6 @@ export const GalleryPicWide = styled.img`
     0 0 5px rgba(0, 0, 0, 0.25), -0 -0 5px rgba(0, 0, 0, 0.25);
   margin-top: 2vmax;
   animation: resize 1s, fadeIn 2s;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0%;
-    }
-
-    100% {
-      opacity: 100%;
-    }
-  }
 
   ${mediaQueries("100", "480", "portrait")`
     width: 75vw !important;

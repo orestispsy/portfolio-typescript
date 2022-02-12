@@ -10,6 +10,8 @@ import { projects } from "./../../common/projects";
 
 import { AppContainer } from "./styled/App.styled";
 
+import { GlobalStyles } from "../../common/GlobalStyles.styled";
+
 const { scrollTo } = require("./AppUtils");
 
 interface Props {}
@@ -22,28 +24,39 @@ export const App: React.FC<Props> = ({}) => {
   const [emailView, setEmailView] = useState<boolean>(false);
   const [viewCount, setViewCount] = useState<number>(0);
 
+  const [animateTopMenu, setAnimateTopMenu] = useState<boolean>(false);
+  const [animateBio, setAnimateBio] = useState<boolean>(false);
+  const [animateFeatures, setAnimateFeatures] = useState<boolean>(false);
+
   useEffect(function () {
     setTimeout((e: boolean) => {
-      setViewCount(viewCount + 1);
-    }, 1500);
+      setAnimateTopMenu(true);
+    }, 500);
 
     setTimeout((e: boolean) => {
-      setViewCount(viewCount + 2);
-    }, 1700);
+      setAnimateBio(true);
+    }, 800);
+    setTimeout((e: boolean) => {
+      setAnimateFeatures(true);
+    }, 1000);
   }, []);
 
   return (
     <HashRouter hashType="noslash">
       <AppContainer>
-        <TopMenu
-          selectedProject={selectedProject}
-          projects={projects}
-          emailView={emailView}
-          setEmailView={(e: any) => setEmailView(e)}
-          ProjectView={projectView}
-          viewCount={viewCount}
-        />
-
+        <GlobalStyles />
+        {animateTopMenu && (
+          <TopMenu
+            selectedProject={selectedProject}
+            projects={projects}
+            emailView={emailView}
+            setEmailView={(e: any) => setEmailView(e)}
+            ProjectView={projectView}
+            animateTopMenu={animateTopMenu}
+            animateFeatures={animateFeatures}
+            animateBio={animateBio}
+          />
+        )}
         <Route
           exact
           path="/"
@@ -56,8 +69,10 @@ export const App: React.FC<Props> = ({}) => {
               mute={mute}
               projectView={projectView}
               scrollTo={scrollTo}
-              viewCount={viewCount}
-              setViewCount={(e: number) => setViewCount(e)}
+              setAnimateBio={(e: boolean) => setAnimateBio(e)}
+              animateBio={animateBio}
+              setAnimateFeatures={(e: boolean) => setAnimateFeatures(e)}
+              animateFeatures={animateFeatures}
             />
           )}
         />

@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 
-import { MainBox, BioText, Dots, More } from "./styled/Bio.styled";
+import {
+  MainBox,
+  BioText,
+  Dots,
+  More,
+} from "../components/Bio/styled/Bio.styled";
 
 interface Props {
   setBioView: (e: any) => void;

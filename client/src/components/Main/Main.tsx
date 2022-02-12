@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useSound from "use-sound";
 
-import { Bio } from "./../Bio/Bio";
+import { Bio } from "../../common/Bio";
 import { TechStack } from "../TechStack/TechStack";
 
 const { letMusic } = require("./MainUtils");
@@ -32,8 +32,10 @@ interface Props {
   setMute: (e: any) => void;
   projectView: boolean;
   scrollTo: (e: any, e2?: ScrollBehavior | undefined) => void;
-  setViewCount: (e: number) => void;
-  viewCount: number;
+  animateBio: boolean;
+  setAnimateBio: (e: boolean) => void;
+  animateFeatures: boolean;
+  setAnimateFeatures: (e: boolean) => void;
 }
 
 export const Main: React.FC<Props> = ({
@@ -44,9 +46,10 @@ export const Main: React.FC<Props> = ({
   setMute,
   projectView,
   scrollTo,
-
-  setViewCount,
-  viewCount,
+  animateBio,
+  setAnimateBio,
+  animateFeatures,
+  setAnimateFeatures,
 }) => {
   const [play, { stop }] = useSound(music, {
     volume: 0.75,
@@ -82,52 +85,54 @@ export const Main: React.FC<Props> = ({
         stop={() => stop()}
         scrollTo={scrollTo}
         play={play}
-        viewCount={viewCount}
-        setViewCount={(e: number) => setViewCount(e)}
+        setAnimateBio={(e: boolean) => setAnimateBio(e)}
+        animateBio={animateBio}
       ></Bio>
 
-      <Latest viewCount={viewCount} ref={projRef}>
+      <Latest animateBio={animateBio} ref={projRef}>
         <div>LATEST PROJECTS</div>
       </Latest>
 
-      <FeaturedBoxBack viewCount={viewCount}>
-        <FeaturedBox>
-          {projects &&
-            projects.map((project: any) => (
-              <ProjectLink to={`/projects/${project.id}`} key={project.id}>
-                {(!selectedProject || selectedProject == project.id) && (
-                  <ProjectBack
-                    onClick={(e) => {
-                      setMute(false);
-                      stop();
-                      setProject(project.id);
-                    }}
-                  >
-                    <Project onClick={(e) => setViewCount(viewCount + 1)}>
-                      <ProjectName>{project.name}</ProjectName>
-                      <ProjectImg src={project.preview}></ProjectImg>
-                      {project.hot && selectedProject == 0 && (
-                        <HotSign src="./hot.png" className="hot"></HotSign>
-                      )}
-                      {project.remastered && selectedProject == 0 && (
-                        <RemasteredSign>Remastered</RemasteredSign>
-                      )}
-                    </Project>
-                  </ProjectBack>
-                )}
-              </ProjectLink>
-            ))}
-        </FeaturedBox>
-      </FeaturedBoxBack>
-
-      <TechStack />
-
-      <Footer>
-        © 2022{" "}
-        <a href="https://zero-psy.com" target="_blank">
-          zero-psy.com{" "}
-        </a>
-      </Footer>
+      {animateFeatures && (
+        <FeaturedBoxBack animateFeatures={animateFeatures}>
+          <FeaturedBox>
+            {projects &&
+              projects.map((project: any) => (
+                <ProjectLink to={`/projects/${project.id}`} key={project.id}>
+                  {(!selectedProject || selectedProject == project.id) && (
+                    <ProjectBack
+                      onClick={(e) => {
+                        setMute(false);
+                        stop();
+                        setProject(project.id);
+                      }}
+                    >
+                      <Project>
+                        <ProjectName>{project.name}</ProjectName>
+                        <ProjectImg src={project.preview}></ProjectImg>
+                        {project.hot && selectedProject == 0 && (
+                          <HotSign src="./hot.png" className="hot"></HotSign>
+                        )}
+                        {project.remastered && selectedProject == 0 && (
+                          <RemasteredSign>Remastered</RemasteredSign>
+                        )}
+                      </Project>
+                    </ProjectBack>
+                  )}
+                </ProjectLink>
+              ))}
+          </FeaturedBox>
+        </FeaturedBoxBack>
+      )}
+      {animateFeatures && <TechStack />}
+      {animateFeatures && (
+        <Footer>
+          © 2022{" "}
+          <a href="https://zero-psy.com" target="_blank">
+            zero-psy.com{" "}
+          </a>
+        </Footer>
+      )}
     </MainContainer>
   );
 };
