@@ -63,18 +63,20 @@ export const Bio: React.FC<Props> = ({
             {`I have worked in TV & Event Production Industry as an electronic engineer.
                             Although, I always wanted to make the`}
             <More
-              col={(mute && "red") || "orange"}
-              anime={(mute && true) || false}
+              col={(!mute && "red") || "orange"}
+              anime={(!mute && true) || false}
               onClick={() => {
+              
                 letMusic(mute, play, setMute, stop);
+              
               }}
             >
               right turn
-              {mute && (
+              {!mute && (
                 <More
                   col="#bfee14"
                   onClick={(e: any) => {
-                    setMute(false);
+                    setMute(true);
                     stop();
                   }}
                 >
