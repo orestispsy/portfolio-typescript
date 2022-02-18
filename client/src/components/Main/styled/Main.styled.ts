@@ -191,10 +191,10 @@ export const ProjectImg = styled.img`
 
   &:hover {
     border: transparent;
-        padding: 14px;
+    padding: 14px;
     width: 13vmax;
     height: 13vmax;
-animation: blinkerButton 2s linear infinite;
+    animation: blinkerButton 2s linear infinite;
   }
 
   &:active {

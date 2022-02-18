@@ -61,7 +61,7 @@ export const Gallery: React.FC<Props> = ({
         <GalleryPic
           src={
             (loaded && projects[selectedProject].pics[counter].pic) ||
-            "./loading.gif"
+            "/loading.gif"
           }
           onClick={(e) => {
             setToggleGallery(!toggleGallery);
@@ -80,7 +80,7 @@ export const Gallery: React.FC<Props> = ({
         <GalleryPicWide
           src={
             (loaded && projects[selectedProject].pics[counter].pic) ||
-            "./loading.gif"
+            "/loading.gif"
           }
           onClick={(e) => setToggleGallery(!toggleGallery)}
           onLoad={(e) => {
@@ -127,7 +127,7 @@ export const Gallery: React.FC<Props> = ({
           </GalleryArrow>
 
           <GalleryZoom
-            src="./zoom.png"
+            src="/zoom.png"
             title="Zoom"
             onClick={() => {
               if (!toggleGallery) {
@@ -153,12 +153,12 @@ export const Gallery: React.FC<Props> = ({
               target="_blank"
               title="Open Project"
             >
-              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
+              <WebLinkImg src="/linkPreview.png"></WebLinkImg>
             </GalleryLink>
           )}
           {projects[selectedProject].url && selectedProject == 0 && (
             <Link to="/" title="Open Project">
-              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
+              <WebLinkImg src="/linkPreview.png"></WebLinkImg>
             </Link>
           )}
           {projects[selectedProject].git && (
@@ -167,7 +167,7 @@ export const Gallery: React.FC<Props> = ({
               target="_blank"
               title="Check Code"
             >
-              <GitLinkImg src="./git.png"></GitLinkImg>
+              <GitLinkImg src="/git.png"></GitLinkImg>
             </GalleryLink>
           )}
         </GalleryLinksBox>

@@ -11,7 +11,7 @@ export const AppContainer = styled.div`
   justify-content: flex-start;
   background-color: black;
 
-  animation: appFadeIn 1.5s;
+  animation: appFadeIn 1.2s step-end;
 
   ${mediaQueries("100", "480", "portrait")`
           width: 80vw;

@@ -182,7 +182,7 @@ export const ScrollBox = styled.div`
 `;
 
 export const ScrollUp = styled.div`
-  background-image: url("./up.png");
+  background-image: url("/up.png");
   background-size: cover;
   width: 3vmax;
   height: 3vmax;
@@ -194,7 +194,7 @@ export const ScrollUp = styled.div`
 `;
 
 export const ScrollDown = styled.div`
-  background-image: url("./down.png");
+  background-image: url("/down.png");
   background-size: cover;
   width: 3vmax;
   height: 3vmax;

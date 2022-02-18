@@ -66,9 +66,7 @@ export const Bio: React.FC<Props> = ({
               col={(!mute && "red") || "orange"}
               anime={(!mute && true) || false}
               onClick={() => {
-              
                 letMusic(mute, play, setMute, stop);
-              
               }}
             >
               right turn

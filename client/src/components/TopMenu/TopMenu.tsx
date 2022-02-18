@@ -16,7 +16,7 @@ interface Props {
   selectedProject: number;
   projects: any;
   emailView: boolean;
-  ProjectView: boolean;
+  projectView: boolean;
   animateFeatures: boolean;
   animateTopMenu: boolean;
   animateBio: boolean;
@@ -27,7 +27,7 @@ export const TopMenu: React.FC<Props> = ({
   setEmailView,
   emailView,
   projects,
-  ProjectView,
+  projectView,
   animateFeatures,
   animateTopMenu,
   animateBio,
@@ -41,7 +41,7 @@ export const TopMenu: React.FC<Props> = ({
       >
         <Headline to={"/"}>
           {!selectedProject && "Orestis Psycharis"}
-          {ProjectView && selectedProject && projects[selectedProject].name}
+          {projectView && selectedProject && projects[selectedProject].name}
         </Headline>
       </TopMenuBar>
       {!selectedProject && (

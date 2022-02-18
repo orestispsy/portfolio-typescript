@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Route, HashRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { Project } from "./../Project/Project";
 import { EmailForm } from "./../EmailForm/EmailForm";
+import { AppLayout } from "./../AppLayout/AppLayout";
 
-import { TopMenu } from "./../TopMenu/TopMenu";
 import { Main } from "./../Main/Main";
 
 import { projects } from "./../../common/projects";
 
-import { AppContainer } from "./styled/App.styled";
-
-import { GlobalStyles } from "../../common/GlobalStyles.styled";
 import useSound from "use-sound";
 const { letMusic } = require("./AppUtils");
 const music = require("./../../../public/alice.mp3");
@@ -20,7 +17,6 @@ const { scrollTo } = require("./AppUtils");
 interface Props {}
 
 export const App: React.FC<Props> = ({}) => {
-
   const [selectedProject, setSelectedProject] = useState<number>(0);
 
   const [mute, setMute] = useState<boolean>(true);
@@ -31,12 +27,12 @@ export const App: React.FC<Props> = ({}) => {
   const [animateBio, setAnimateBio] = useState<boolean>(false);
   const [animateFeatures, setAnimateFeatures] = useState<boolean>(false);
 
-    const [play, { stop }] = useSound(music, {
-        volume: 0.75,
-        onend: (e: any) => {
-            setMute(true);
-        },
-    });
+  const [play, { stop }] = useSound(music, {
+    volume: 0.75,
+    onend: (e: any) => {
+      setMute(true);
+    },
+  });
 
   useEffect(function () {
     setTimeout((e: boolean) => {
@@ -52,80 +48,75 @@ export const App: React.FC<Props> = ({}) => {
   }, []);
 
   return (
-      <HashRouter hashType="noslash">
-          <AppContainer>
-              <GlobalStyles />
-              {animateTopMenu && (
-                  <TopMenu
-                      selectedProject={selectedProject}
-                      projects={projects}
-                      emailView={emailView}
-                      setEmailView={(e: any) => setEmailView(e)}
-                      ProjectView={projectView}
-                      animateTopMenu={animateTopMenu}
-                      animateFeatures={animateFeatures}
-                      animateBio={animateBio}
-                  />
-              )}
-              <Route
-                  exact
-                  path="/"
-                  render={(props) => (
-                      <Main
-                          setProject={(e: number) => setSelectedProject(e)}
-                          selectedProject={selectedProject}
-                          projects={projects}
-                          setMute={(e: boolean) => setMute(e)}
-                          mute={mute}
-                          projectView={projectView}
-                          scrollTo={scrollTo}
-                          setAnimateBio={(e: boolean) => setAnimateBio(e)}
-                          animateBio={animateBio}
-                          setAnimateFeatures={(e: boolean) =>
-                              setAnimateFeatures(e)
-                          }
-                          animateFeatures={animateFeatures}
-                          animationChecker={animationChecker}
-                          setAnimationChecker={(e: boolean) =>
-                              setAnimationChecker(e)
-                          }
-                          play={play}
-                          letMusic={letMusic}
-                          stop={() => stop()}
-                      />
-                  )}
+    <Router>
+      <Routes>
+        <Route
+          element={
+            <AppLayout
+              selectedProject={selectedProject}
+              projects={projects}
+              emailView={emailView}
+              setEmailView={(e: any) => setEmailView(e)}
+              projectView={projectView}
+              animateTopMenu={animateTopMenu}
+              animateFeatures={animateFeatures}
+              animateBio={animateBio}
+            />
+          }
+        >
+          <Route
+            path="/"
+            element={
+              <Main
+                setProject={(e: number) => setSelectedProject(e)}
+                selectedProject={selectedProject}
+                projects={projects}
+                setMute={(e: boolean) => setMute(e)}
+                mute={mute}
+                projectView={projectView}
+                scrollTo={scrollTo}
+                setAnimateBio={(e: boolean) => setAnimateBio(e)}
+                animateBio={animateBio}
+                setAnimateFeatures={(e: boolean) => setAnimateFeatures(e)}
+                animateFeatures={animateFeatures}
+                animationChecker={animationChecker}
+                setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
+                play={play}
+                letMusic={letMusic}
+                stop={() => stop()}
               />
-              <Route
-                  exact
-                  path="/contact"
-                  render={(props) => (
-                      <EmailForm
-                          setProjectView={(e: boolean) => setProjectView(e)}
-                          setProject={(e: any) => setSelectedProject(e)}
-                          setEmailView={(e: any) => setEmailView(e)}
-                          stop={() => stop()}
-                          setMute={(e: boolean) => setMute(e)}
-                      />
-                  )}
-              />
+            }
+          ></Route>
 
-              <Route
-                  path="/projects/:id"
-                  render={(props) => (
-                      <Project
-                          setProject={(e: any) => setSelectedProject(e)}
-                          selectedProject={selectedProject}
-                          projects={projects}
-                          setProjectView={(e: any) => setProjectView(e)}
-                          scrollTo={scrollTo}
-                          setAnimationChecker={(e: boolean) =>
-                              setAnimationChecker(e)
-                          }
-                          animationChecker={animationChecker}
-                      />
-                  )}
+          <Route
+            path="/contact"
+            element={
+              <EmailForm
+                setProjectView={(e: boolean) => setProjectView(e)}
+                setProject={(e: any) => setSelectedProject(e)}
+                setEmailView={(e: any) => setEmailView(e)}
+                stop={() => stop()}
+                setMute={(e: boolean) => setMute(e)}
               />
-          </AppContainer>
-      </HashRouter>
+            }
+          ></Route>
+
+          <Route
+            path="/projects/:id"
+            element={
+              <Project
+                setProject={(e: any) => setSelectedProject(e)}
+                selectedProject={selectedProject}
+                projects={projects}
+                setProjectView={(e: any) => setProjectView(e)}
+                scrollTo={scrollTo}
+                setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
+                animationChecker={animationChecker}
+              />
+            }
+          ></Route>
+        </Route>
+      </Routes>
+    </Router>
   );
 };
