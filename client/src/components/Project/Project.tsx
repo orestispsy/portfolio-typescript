@@ -32,6 +32,7 @@ interface Props {
 
 type params = {
   id: string;
+  title: string;
 };
 
 export const Project: React.FC<Props> = ({
@@ -49,7 +50,7 @@ export const Project: React.FC<Props> = ({
 
   const galRef = useRef<HTMLDivElement | null>(null);
 
-  let { id } = useParams<params>();
+  let { id, title } = useParams<params>();
 
   useEffect(function () {
     setProject(id);
@@ -78,7 +79,6 @@ export const Project: React.FC<Props> = ({
               <ProjectSection ref={galRef}>
                 <Gallery
                   projects={projects}
-                  selectedProject={selectedProject}
                   toggleGallery={toggleGallery}
                   setToggleGallery={setToggleGallery}
                   galRef={galRef}

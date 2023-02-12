@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { AppContainer } from "./styled/AppLayout.styled";
+import { AppContainer } from "../AppLayout/styled/AppLayout.styled";
 import { TopMenu } from "./../TopMenu/TopMenu";
 import { GlobalStyles } from "../../common/GlobalStyles.styled";
 

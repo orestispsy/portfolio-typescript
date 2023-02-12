@@ -21,8 +21,6 @@ interface Props {
   setProjectView: (e: boolean) => void;
   setProject: (e: boolean) => void;
   setEmailView: (e: boolean) => void;
-  stop: () => void;
-  setMute: (e: boolean) => void;
 }
 
 const {
@@ -36,8 +34,6 @@ export const EmailForm: React.FC<Props> = ({
   setProjectView,
   setProject,
   setEmailView,
-  stop,
-  setMute,
 }) => {
   const [name, setName] = useState<boolean | string>(false);
   const [email, setEmail] = useState<boolean | string>(false);
@@ -50,8 +46,6 @@ export const EmailForm: React.FC<Props> = ({
     setProjectView(false);
     setProject(false);
     setEmailView(true);
-    stop();
-    setMute(true);
   }, []);
 
   return (

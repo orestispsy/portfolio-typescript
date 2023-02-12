@@ -180,7 +180,7 @@ export const ProjectImg = styled.img`
   border-radius: 50%;
   border-style: groove;
   border-width: thin;
-  padding: 25px;
+  padding: 1vmax;
   border-bottom: transparent;
   box-shadow: 0 0 10px black;
   transition: 2s;
@@ -191,7 +191,7 @@ export const ProjectImg = styled.img`
 
   &:hover {
     border: transparent;
-    padding: 14px;
+    padding: 0.6vmax;
     width: 13vmax;
     height: 13vmax;
     animation: blinkerButton 2s linear infinite;

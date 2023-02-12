@@ -82,7 +82,7 @@ export const Bio: React.FC<Props> = ({
                 </More>
               )}
             </More>
-            {`. One year ago, I took part in the legendary Bootcamp of Spiced Academy in Berlin. A coding-camp
+            {`. It was the beginning of 2021, when I took part in the legendary Bootcamp of Spiced Academy in Berlin. A coding-camp
                              that altered my knowledge to the point and taught me how to activate super-powers again. `}
           </BioText>
           <BioText animateBio={animateBio} animationChecker={animationChecker}>

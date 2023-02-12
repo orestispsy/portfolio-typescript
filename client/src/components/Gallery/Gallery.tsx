@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import {
   GalleryContainer,
@@ -20,14 +20,18 @@ interface Props {
   toggleGallery: boolean;
   setToggleGallery: (e: any) => void;
   galRef: React.MutableRefObject<HTMLDivElement | null> | null;
-  selectedProject: number;
+
   projects: any;
   scrollTo: (e: any, e2?: ScrollBehavior | undefined) => void;
 }
 
+type params = {
+  id: string;
+};
+
 export const Gallery: React.FC<Props> = ({
   projects,
-  selectedProject,
+
   toggleGallery,
   setToggleGallery,
   scrollTo,
@@ -37,11 +41,13 @@ export const Gallery: React.FC<Props> = ({
   const [maxItems, setMaxItems] = useState<number>(0);
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  let { id } = useParams<params>();
+
   useEffect(
     function () {
-      if (projects && selectedProject) {
-        if (projects[selectedProject].pics) {
-          setMaxItems(projects[selectedProject].pics.length - 1);
+      if (projects && projects[Number(id)]) {
+        if (projects[Number(id)].pics) {
+          setMaxItems(projects[Number(id)].pics.length - 1);
         }
       }
     },
@@ -55,21 +61,29 @@ export const Gallery: React.FC<Props> = ({
     [counter]
   );
 
+  useEffect(function () {
+    setLoaded(true);
+  }, []);
+
   return (
     <GalleryContainer>
       {!toggleGallery && (
         <GalleryPic
           src={
-            (loaded && projects[selectedProject].pics[counter].pic) ||
-            "/loading.gif"
+            (loaded && projects[Number(id)].pics[counter].pic) ||
+            "./loading.gif"
           }
-          onClick={(e) => {
-            setToggleGallery(!toggleGallery);
-            setTimeout(() => {
-              if (galRef?.current) {
-                scrollTo(galRef.current.offsetTop, "smooth");
-              }
-            }, 700);
+          onClick={() => {
+            if (!toggleGallery) {
+              setToggleGallery(true);
+              setTimeout(() => {
+                if (galRef?.current) {
+                  scrollTo(galRef.current.offsetTop, "smooth");
+                }
+              }, 700);
+            } else {
+              setToggleGallery(false);
+            }
           }}
           onLoad={(e) => {
             setLoaded(true);
@@ -79,20 +93,31 @@ export const Gallery: React.FC<Props> = ({
       {toggleGallery && (
         <GalleryPicWide
           src={
-            (loaded && projects[selectedProject].pics[counter].pic) ||
-            "/loading.gif"
+            (loaded && projects[Number(id)].pics[counter].pic) ||
+            "./loading.gif"
           }
-          onClick={(e) => setToggleGallery(!toggleGallery)}
+          onClick={() => {
+            if (!toggleGallery) {
+              setToggleGallery(true);
+              setTimeout(() => {
+                if (galRef?.current) {
+                  scrollTo(galRef.current.offsetTop, "smooth");
+                }
+              }, 700);
+            } else {
+              setToggleGallery(false);
+            }
+          }}
           onLoad={(e) => {
             setLoaded(true);
           }}
         ></GalleryPicWide>
       )}
 
-      {projects[selectedProject].pics.length != 1 && (
+      {projects[Number(id)].pics.length != 1 && (
         <GalleryControls>
           <GalleryNumbers>
-            {counter + 1}/{projects[selectedProject].pics.length}
+            {counter + 1}/{projects[Number(id)].pics.length}
           </GalleryNumbers>
           <GalleryArrow
             title="Previous"
@@ -127,7 +152,7 @@ export const Gallery: React.FC<Props> = ({
           </GalleryArrow>
 
           <GalleryZoom
-            src="/zoom.png"
+            src="./zoom.png"
             title="Zoom"
             onClick={() => {
               if (!toggleGallery) {
@@ -147,27 +172,27 @@ export const Gallery: React.FC<Props> = ({
 
       {!toggleGallery && (
         <GalleryLinksBox>
-          {projects[selectedProject].url && selectedProject != 0 && (
+          {projects[Number(id)].url && Number(id) != 0 && (
             <GalleryLink
-              href={projects[selectedProject].url}
+              href={projects[Number(id)].url}
               target="_blank"
               title="Open Project"
             >
-              <WebLinkImg src="/linkPreview.png"></WebLinkImg>
+              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
             </GalleryLink>
           )}
-          {projects[selectedProject].url && selectedProject == 0 && (
+          {projects[Number(id)].url && Number(id) == 0 && (
             <Link to="/" title="Open Project">
-              <WebLinkImg src="/linkPreview.png"></WebLinkImg>
+              <WebLinkImg src="./linkPreview.png"></WebLinkImg>
             </Link>
           )}
-          {projects[selectedProject].git && (
+          {projects[Number(id)].git && (
             <GalleryLink
-              href={projects[selectedProject].git}
+              href={projects[Number(id)].git}
               target="_blank"
               title="Check Code"
             >
-              <GitLinkImg src="/git.png"></GitLinkImg>
+              <GitLinkImg src="./git.png"></GitLinkImg>
             </GalleryLink>
           )}
         </GalleryLinksBox>

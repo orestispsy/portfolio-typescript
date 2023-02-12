@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, HashRouter as Router } from "react-router-dom";
 import { Project } from "./../Project/Project";
 import { EmailForm } from "./../EmailForm/EmailForm";
 import { AppLayout } from "./../AppLayout/AppLayout";
@@ -10,7 +10,7 @@ import { projects } from "./../../common/projects";
 
 import useSound from "use-sound";
 const { letMusic } = require("./AppUtils");
-const music = require("./../../../public/alice.mp3");
+const music = require("./../../../public/inventions.mp3");
 
 const { scrollTo } = require("./AppUtils");
 
@@ -65,6 +65,31 @@ export const App: React.FC<Props> = ({}) => {
           }
         >
           <Route
+            path="/contact"
+            element={
+              <EmailForm
+                setProjectView={(e: boolean) => setProjectView(e)}
+                setProject={(e: any) => setSelectedProject(e)}
+                setEmailView={(e: any) => setEmailView(e)}
+              />
+            }
+          ></Route>
+
+          <Route
+            path="/projects/:id/:title"
+            element={
+              <Project
+                setProject={(e: any) => setSelectedProject(e)}
+                selectedProject={selectedProject}
+                projects={projects}
+                setProjectView={(e: any) => setProjectView(e)}
+                scrollTo={scrollTo}
+                setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
+                animationChecker={animationChecker}
+              />
+            }
+          ></Route>
+          <Route
             path="/"
             element={
               <Main
@@ -84,34 +109,6 @@ export const App: React.FC<Props> = ({}) => {
                 play={play}
                 letMusic={letMusic}
                 stop={() => stop()}
-              />
-            }
-          ></Route>
-
-          <Route
-            path="/contact"
-            element={
-              <EmailForm
-                setProjectView={(e: boolean) => setProjectView(e)}
-                setProject={(e: any) => setSelectedProject(e)}
-                setEmailView={(e: any) => setEmailView(e)}
-                stop={() => stop()}
-                setMute={(e: boolean) => setMute(e)}
-              />
-            }
-          ></Route>
-
-          <Route
-            path="/projects/:id"
-            element={
-              <Project
-                setProject={(e: any) => setSelectedProject(e)}
-                selectedProject={selectedProject}
-                projects={projects}
-                setProjectView={(e: any) => setProjectView(e)}
-                scrollTo={scrollTo}
-                setAnimationChecker={(e: boolean) => setAnimationChecker(e)}
-                animationChecker={animationChecker}
               />
             }
           ></Route>

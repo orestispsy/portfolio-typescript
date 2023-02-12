@@ -1,16 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { mediaQueries } from "../../../common/mediaQueries";
 
 type LinkImageTypes = {
   filter?: string;
   invert?: string;
+  block?: boolean;
 };
 
 type LinkTypes = {
   href: string;
-  target: string;
+  target?: string;
   title: string;
+  block?: boolean;
+
 };
 type topMenuBarTypes = {
   animateTopMenu?: boolean;
@@ -54,22 +57,40 @@ export const TopMenuLinks = styled.div`
 `}
 `;
 
-export const TopMenuLink = styled.a<LinkTypes>``;
+export const TopMenuLink = styled.a<LinkTypes>` 
+      ${(props) => props.block && css`
+        cursor:unset;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+          background-image: url("./block.png");
+          background-size:cover;
+        }
+    `};
+`;
 
 export const TopMenuLinkImage = styled.img<LinkImageTypes>`
   width: 3vmax;
   height: 3vmax;
-  filter: ${(props) => props.filter && `invert(100%)`};
+  ${(props) => props.filter && css`
+    filter: invert(100%)
+  `};
 
   &:hover {
     filter: invert(${(props) => props.invert}%);
   }
+
+    ${(props) => props.block && css`
+   pointer-events: none;
+    `};
 `;
 
 export const TopMenuLinkHat = styled(Link)`
   width: 4.5vmax;
   height: 2.5vmax;
-  background-image: url("/email.png");
+  background-image: url("./email.png");
   background-size: cover;
   cursor: pointer;
   filter: saturate(60%);

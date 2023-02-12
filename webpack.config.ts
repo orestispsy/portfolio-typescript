@@ -1,5 +1,5 @@
 import path from "path";
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import HtmlWebPackPlugin from "html-webpack-plugin";
 
 module.exports = {
   mode: "production",
@@ -16,9 +16,6 @@ module.exports = {
     hints: false,
   },
   devServer: {
-    historyApiFallback: true,
-
-    hot: true,
     static: {
       directory: path.join(__dirname, "client", "public"),
     },
@@ -46,16 +43,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              url: false,
-            },
-          },
-        ],
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.html$/,
@@ -68,8 +57,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "bundle.css",
+    new HtmlWebPackPlugin({
+      template: "./client/index.html",
+      filename: "./index.html",
+      inject: "head",
     }),
   ],
 };

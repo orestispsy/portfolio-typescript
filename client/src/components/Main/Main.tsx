@@ -103,12 +103,13 @@ export const Main: React.FC<Props> = ({
         >
           <FeaturedBox>
             {projects.map((project: any) => (
-              <ProjectLink to={`/projects/${project.id}`} key={project.id}>
+              <ProjectLink
+                to={`/projects/${project.id}/${project.title}`}
+                key={project.id}
+              >
                 {(!selectedProject || selectedProject == project.id) && (
                   <ProjectBack
                     onClick={(e) => {
-                      setMute(true);
-                      stop();
                       setProject(project.id);
                     }}
                   >
